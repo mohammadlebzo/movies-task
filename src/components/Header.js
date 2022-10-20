@@ -15,11 +15,8 @@ const HeaderEl = styled.header`
   width: 100%;
   z-index: 10;
   transition: all 0.3s ease-out;
-  
 
   opacity: ${(props) => props.visibility};
-
-
 `;
 
 const Content = styled.div`
@@ -55,29 +52,111 @@ const SubMedia = styled.div`
 `;
 
 const NavList = styled.ul`
-    font-size: 16px;
-    line-height: 24px;
-    height: 40px;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    list-style-type: none;
-    text-decoration: none;
-  }
-  `;
-
-const NavItem = styled.li`
-  font-weight: 600;
-  align-content: center;
+  font-size: 16px;
+  line-height: 24px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style-type: none;
   text-decoration: none;
-  padding: 8px;
-  color: #ffff;
+  padding: 0;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-size: 1em;
+  flex-direction: row;
 
-  & a {
-    text-decoration: none;
-    color: #ffff;
+  & li:first-child {
+    margin-left: 0;
   }
+
+  & li {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    font-weight: 600;
+    padding: 8px;
+    align-content: center;
+    text-decoration: none;
+
+    color: #ffff;
+
+    & a {
+      text-decoration: none;
+      color: #ffff;
+    }
+  }
+`;
+
+const PlusItem = styled.span`
+  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-371-plus-white-0bac34f16124808a12ea863b4d9cc6e599dee7c0a80658cfe9ead26939e64517.svg);
+  background-color: transparent;
+  font-size: 1.4em;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  min-height: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: inherit;
+  box-sizing: border-box;
+`;
+
+const TranslateItem = styled.li`
+  display: block;
+  padding: 4px 0;
+
+  & div {
+    width: 28px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 3px 5px;
+    transition: linear 0.1s;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+  }
+
+  & div:hover {
+    background-color: #fff;
+    border: 1px solid #000000;
+    color: #000000;
+    cursor: pointer;
+  }
+`;
+
+const SearchItem = styled.span`
+  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-28-search-blue-177462d06db81ff2a02aa022c1c0be5ba4200d7bd3f51091ed9298980e3a26a1.svg);
+  background-color: transparent;
+  font-size: 1.4em;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  min-height: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: inherit;
+  box-sizing: border-box;
 `;
 
 const Logo = styled.a`
@@ -89,17 +168,15 @@ const Logo = styled.a`
 
 function Header() {
   const [isVisibil, setIsVisibil] = useState(1);
-//   const [classTest, setClassTest] = useState("show");
 
   const handleNavigation = useCallback(
     (e) => {
       const window = e.currentTarget;
       if (window.scrollY > 10) {
-        setIsVisibil(0)
+        setIsVisibil(0);
       } else if (window.scrollY < 10) {
-        setIsVisibil(1)
+        setIsVisibil(1);
       }
-    //   console.log(classTest);
     },
     [window.scrollY]
   );
@@ -127,37 +204,41 @@ function Header() {
                 />
               </Logo>
               <NavList>
-                <NavItem>
+                <li>
                   <a href="">Movies</a>
-                </NavItem>
-                <NavItem>
+                </li>
+                <li>
                   <a href="">TV Shows</a>
-                </NavItem>
-                <NavItem>
+                </li>
+                <li>
                   <a href="">People</a>
-                </NavItem>
-                <NavItem>
+                </li>
+                <li>
                   <a href="">More</a>
-                </NavItem>
+                </li>
               </NavList>
             </SubMedia>
             <SubMedia>
               <NavList>
-                <NavItem>
-                  <a href="">PH</a>
-                </NavItem>
-                <NavItem>
+                <li>
+                  <a href="">
+                    <PlusItem></PlusItem>
+                  </a>
+                </li>
+                <TranslateItem>
                   <div>en</div>
-                </NavItem>
-                <NavItem>
+                </TranslateItem>
+                <li>
                   <a href="">Login</a>
-                </NavItem>
-                <NavItem>
+                </li>
+                <li>
                   <a href="">Join TMDB</a>
-                </NavItem>
-                <NavItem>
-                  <a href="">PH</a>
-                </NavItem>
+                </li>
+                <li>
+                  <a href="">
+                    <SearchItem></SearchItem>
+                  </a>
+                </li>
               </NavList>
             </SubMedia>
           </NavWrapper>
