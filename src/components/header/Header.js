@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { useState, useEffect, useCallback } from "react";
+// import { NavDropdown, Dropdown } from "react-bootstrap";
+// import DropdownButton from "react-bootstrap/DropdownButton";
+import { Backdrop, Button } from "@mui/material";
+import { FONT, BACKGROUND } from '../../constants/style/StyleParams'
+import Logo from "./Logo";
 
 const HeaderEl = styled.header`
-  font-size: 16px;
   height: 64px;
   box-sizing: border-box;
   display: flex;
@@ -11,7 +15,7 @@ const HeaderEl = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(3, 37, 65, 1);
+  background-color: ${FONT.color.darkBlue};
   width: 100%;
   z-index: 10;
   transition: all 0.3s ease-out;
@@ -20,16 +24,12 @@ const HeaderEl = styled.header`
 `;
 
 const Content = styled.div`
-  font-size: 16px;
-  height: 40px;
   width: 100%;
   display: flex;
   justify-content: center;
 `;
 
 const NavWrapper = styled.div`
-  font-size: 16px;
-
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -41,9 +41,6 @@ const NavWrapper = styled.div`
 `;
 
 const SubMedia = styled.div`
-  font-size: 16px;
-  height: 40px;
-
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
@@ -52,7 +49,6 @@ const SubMedia = styled.div`
 `;
 
 const NavList = styled.ul`
-  font-size: 16px;
   line-height: 24px;
   height: 40px;
   position: relative;
@@ -62,7 +58,7 @@ const NavList = styled.ul`
   list-style-type: none;
   text-decoration: none;
   padding: 0;
-  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-family: ${FONT.family.main};
   font-size: 1em;
   flex-direction: row;
 
@@ -71,6 +67,7 @@ const NavList = styled.ul`
   }
 
   & li {
+    position: relative;
     display: flex;
     align-items: center;
     align-content: center;
@@ -79,17 +76,94 @@ const NavList = styled.ul`
     align-content: center;
     text-decoration: none;
 
-    color: #ffff;
+    color: ${FONT.color.white};
 
     & a {
       text-decoration: none;
-      color: #ffff;
+      color: ${FONT.color.white};
+    }
+
+    & .navItemWrapper {
+      
+      width: 173.283px;
+      height: 138.233px;
+      overflow: hidden;
+      z-index: 10002;
+      top: 40px;
+      left: 0px;
+      box-sizing: content-box;
+      display: none;
+      position: absolute;
+
+      border-radius: 0 0 0.25rem 0.25rem;
+
+      & ul {
+        max-height: 580.767px;
+        overflow: auto;
+        position: relative;
+        font-size: 10px;
+        font-family: ${FONT.family.main};
+        font-stretch: 100%;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        display: none;
+        transform: translateY(-138.233px);
+      }
+    }
+
+    &:hover .navItemWrapper {
+      overflow: visible;
+      display: block;
+
+      & ul {
+        display: block;
+        transform: translateY(0px);
+
+        box-shadow: none;
+        border-color: rgba(0, 0, 0, 0.15);
+        color: ${FONT.color.graysh};
+        background-color: ${FONT.color.white};
+        margin: 0;
+        padding: 0.5rem 0;
+        list-style: none;
+        border-radius: 0.25rem;
+        border-width: 1px;
+        border-style: solid;
+        box-sizing: border-box;
+
+        outline: 0;
+        text-decoration: none;
+
+        & li {
+          padding-right: 50px;
+          position: relative;
+          font-size: 0.8rem;
+          line-height: 1.5;
+          outline: 0;
+          border-width: 0;
+          display: flex;
+          user-select: none;
+          cursor: default;
+          align-items: center;
+          align-content: center;
+          color: ${FONT.color.black};
+          font-weight: 400;
+        }
+
+        & li:hover {
+          text-decoration: none;
+          outline: 0;
+          cursor: pointer;
+          background-color: rgb(244, 244, 244);
+        }
+      }
     }
   }
 `;
 
 const PlusItem = styled.span`
-  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-371-plus-white-0bac34f16124808a12ea863b4d9cc6e599dee7c0a80658cfe9ead26939e64517.svg);
+  background-image: url(${BACKGROUND.iconURL.plus});
   background-color: transparent;
   font-size: 1.4em;
   position: relative;
@@ -120,26 +194,26 @@ const TranslateItem = styled.li`
     justify-content: center;
     align-items: center;
     align-content: center;
-    border: 1px solid #fff;
+    border: 1px solid ${FONT.color.white};
     border-radius: 3px;
     padding: 3px 5px;
     transition: linear 0.1s;
-    color: #fff;
+    color: ${FONT.color.white};
     font-weight: 600;
     font-size: 0.9em;
     text-transform: uppercase;
   }
 
   & div:hover {
-    background-color: #fff;
-    border: 1px solid #000000;
-    color: #000000;
+    background-color: ${FONT.color.white};
+    border: 1px solid ${FONT.color.black};
+    color: ${FONT.color.black};
     cursor: pointer;
   }
 `;
 
 const SearchItem = styled.span`
-  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-28-search-blue-177462d06db81ff2a02aa022c1c0be5ba4200d7bd3f51091ed9298980e3a26a1.svg);
+  background-image: url(${BACKGROUND.iconURL.search});
   background-color: transparent;
   font-size: 1.4em;
   position: relative;
@@ -157,13 +231,6 @@ const SearchItem = styled.span`
   background-repeat: no-repeat;
   color: inherit;
   box-sizing: border-box;
-`;
-
-const Logo = styled.a`
-  display: block;
-  margin-right: 16px;
-  width: 154px;
-  height: 20px;
 `;
 
 function Header() {
@@ -195,26 +262,48 @@ function Header() {
         <Content>
           <NavWrapper>
             <SubMedia>
-              <Logo href="">
-                <img
-                  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
-                  alt=""
-                  width={154}
-                  height={20}
-                />
-              </Logo>
+              <Logo />
               <NavList>
                 <li>
                   <a href="">Movies</a>
+                  <div className="navItemWrapper">
+                    <ul>
+                      <li>Popular</li>
+                      <li>Now Playing</li>
+                      <li>Upcoming</li>
+                      <li>Top Rated</li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <a href="">TV Shows</a>
+                  <div className="navItemWrapper">
+                    <ul>
+                      <li>Popular</li>
+                      <li>Airing Today</li>
+                      <li>On TV</li>
+                      <li>Top Rated</li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <a href="">People</a>
+                  <div className="navItemWrapper">
+                    <ul>
+                      <li>Popular People</li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <a href="">More</a>
+                  <div className="navItemWrapper">
+                    <ul>
+                      <li>Discussions</li>
+                      <li>Leaderboard</li>
+                      <li>Support</li>
+                      <li>API</li>
+                    </ul>
+                  </div>
                 </li>
               </NavList>
             </SubMedia>

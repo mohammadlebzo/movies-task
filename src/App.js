@@ -1,7 +1,6 @@
 import "./App.css";
-// import Header from "./components/Header";
-// import MainWrapper from "./components/PageWrapper";
-import Footer from "./components/Footer";
+
+import Footer from "./components/footer/Footer";
 import PageWrapper from "./components/PageWrapper";
 
 
