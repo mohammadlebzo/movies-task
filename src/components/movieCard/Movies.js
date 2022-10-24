@@ -161,7 +161,7 @@ function Movies(props) {
           }
 
           return (
-            <MovieCardWrapper key={movie.id}>
+            <MovieCardWrapper key={movie.id} id={"test"} >
               <ImageSection>
                 <ImageWrapper>
                   <a href="">

@@ -89,7 +89,7 @@ function MoviesList(props) {
       <MainListWrapper>
         <MoviesSectionWrapper>
           <MediaItems>
-            <CardsWrapper>
+            <CardsWrapper page={props.page} >
               <Movies
                 page={props.page}
                 filter={props.filter}

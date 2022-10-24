@@ -11,7 +11,7 @@ const LogoWrapper = styled.a`
 function Logo() {
   return (
     <>
-      <LogoWrapper href="#">
+      <LogoWrapper href="">
         <img
           src={IMAGE.headerLogo}
           alt=""
