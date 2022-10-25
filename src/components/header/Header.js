@@ -1,10 +1,13 @@
+import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import Logo from "./Logo";
 import styled from "styled-components";
 import { useState, useEffect, useCallback } from "react";
-// import { NavDropdown, Dropdown } from "react-bootstrap";
-// import DropdownButton from "react-bootstrap/DropdownButton";
-import { Backdrop, Button } from "@mui/material";
-import { FONT, BACKGROUND } from '../../constants/style/StyleParams'
-import Logo from "./Logo";
+
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const HeaderEl = styled.header`
   height: 64px;
@@ -13,20 +16,16 @@ const HeaderEl = styled.header`
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 0;
+  top: 0px;
   left: 0;
   background-color: ${FONT.color.darkBlue};
   width: 100%;
   z-index: 10;
-  transition: all 0.3s ease-out;
+  transition: top 0.2s linear;
 
-  opacity: ${(props) => props.visibility};
-`;
-
-const Content = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  &.up {
+    top: -65px;
+  }
 `;
 
 const NavWrapper = styled.div`
@@ -38,14 +37,6 @@ const NavWrapper = styled.div`
   max-width: 1400px;
   width: 100%;
   padding: 0 40px;
-`;
-
-const SubMedia = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  align-items: center;
-  overflow: visible;
 `;
 
 const NavList = styled.ul`
@@ -84,7 +75,6 @@ const NavList = styled.ul`
     }
 
     & .navItemWrapper {
-      
       width: 173.283px;
       height: 138.233px;
       overflow: hidden;
@@ -183,6 +173,35 @@ const PlusItem = styled.span`
   box-sizing: border-box;
 `;
 
+const SubMedia = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: visible;
+`;
+
+const SearchItem = styled.span`
+  background-image: url(${BACKGROUND.iconURL.search});
+  background-color: transparent;
+  font-size: 1.4em;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  min-height: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: inherit;
+  box-sizing: border-box;
+`;
+
 const TranslateItem = styled.li`
   display: block;
   padding: 4px 0;
@@ -212,37 +231,18 @@ const TranslateItem = styled.li`
   }
 `;
 
-const SearchItem = styled.span`
-  background-image: url(${BACKGROUND.iconURL.search});
-  background-color: transparent;
-  font-size: 1.4em;
-  position: relative;
-  top: 0;
-  left: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1em;
-  min-height: 1em;
-  width: 1em;
-  height: 1em;
-  line-height: inherit;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: inherit;
-  box-sizing: border-box;
-`;
-
 function Header() {
-  const [isVisibil, setIsVisibil] = useState(1);
+  const [testClass, setTestClass] = useState("down");
 
   const handleNavigation = useCallback(
     (e) => {
       const window = e.currentTarget;
+      currentScrollY = window.scrollY;
       if (window.scrollY > 10) {
-        setIsVisibil(0);
+        setTestClass("up");
+        console.log(currentScrollY);
       } else if (window.scrollY < 10) {
-        setIsVisibil(1);
+        setTestClass("down");
       }
     },
     [window.scrollY]
@@ -258,7 +258,7 @@ function Header() {
 
   return (
     <>
-      <HeaderEl visibility={isVisibil}>
+      <HeaderEl className={testClass}>
         <Content>
           <NavWrapper>
             <SubMedia>

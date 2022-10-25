@@ -1,6 +1,8 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Footer from "../../components/footer/Footer";
+import Footer from "./Footer";
+
+const { getByRole, getAllByRole } = screen;
 
 describe("Footer component", () => {
   //   test("test", () => {
@@ -13,28 +15,28 @@ describe("Footer component", () => {
   test("renders the footer wrapper", () => {
     render(<Footer />);
 
-    const footerElement = screen.getByRole("contentinfo");
+    const footerElement = getByRole("contentinfo");
     expect(footerElement).toBeInTheDocument();
   });
 
   test("renders the nav tag container", () => {
     render(<Footer />);
 
-    const navElement = screen.getByRole("navigation");
+    const navElement = getByRole("navigation");
     expect(navElement).toBeInTheDocument();
   });
 
   test("renders the footer logo image", () => {
     render(<Footer />);
 
-    const logoImage = screen.getByRole("img");
+    const logoImage = getByRole("img");
     expect(logoImage).toBeInTheDocument();
   });
 
   test("renders all the links in the footer", () => {
     render(<Footer />);
 
-    const linkElements = screen.getAllByRole("link");
+    const linkElements = getAllByRole("link");
     linkElements.map((link) => expect(link).toBeInTheDocument());
   });
 
@@ -42,7 +44,7 @@ describe("Footer component", () => {
     render(<Footer />);
 
     const currentURL = global.window.location.href;
-    const linkElements = screen.getAllByRole("link");
+    const linkElements = getAllByRole("link");
 
     linkElements.map((link) => {
       userEvent.click(link);

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { IMAGE, FONT, BACKGROUND } from "../../constants/style/StyleParams";
 import FooterContentWrapper from "./FooterContentWrapper";
+import { IMAGE, FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import styled from "styled-components";
 
 const FooterEl = styled.footer`
   font-family: ${FONT.family.main};
@@ -34,28 +34,6 @@ const FooterEl = styled.footer`
   }
 `;
 
-const NavWrapper = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 80px;
-  padding-bottom: 80px;
-  font-size: 0.9em;
-  color: ${FONT.color.white};
-
-  & div {
-    margin-right: 40px;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-  & div img {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-`;
-
 const FooterLogo = styled.div`
   text-align: right;
   position: relative;
@@ -84,6 +62,28 @@ const JoinButton = styled.a`
   border-radius: 5px;
   padding: 8px 16px;
   transition: linear 0.1s;
+`;
+
+const NavWrapper = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  font-size: 0.9em;
+  color: ${FONT.color.white};
+
+  & div {
+    margin-right: 40px;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  & div img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 `;
 
 function Footer() {

@@ -1,19 +1,7 @@
+import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useState, useRef } from "react";
-import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
-
-const FilterSortCard = styled.div`
-  min-width: 260px;
-  width: 260px;
-  border: 1px solid #e3e3e3;
-  border-radius: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-`;
 
 const CardController = styled.div`
   width: 100%;
@@ -50,6 +38,19 @@ const CardController = styled.div`
     box-sizing: border-box;
     cursor: pointer;
   }
+`;
+
+const FilterSortCard = styled.div`
+  min-width: 260px;
+  width: 260px;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 `;
 
 const FilterContainer = styled.div`
@@ -159,7 +160,7 @@ const SearchButton = styled.div`
   }
 `;
 
-function Sort(props) {
+function Sort({ setFilter, setToggleScrollLoading, setAllowLoading, setPage }) {
   const [isShowen, setIsShowen] = useState(true);
   const [toggleButton, setToggleButton] = useState(false);
   let searchToggle = "off";
@@ -210,10 +211,10 @@ function Sort(props) {
           e.preventDefault();
 
           setToggleButton(false);
-          props.setFilter(option.current.value);
-          props.setToggleScrollLoading(false);
-          props.setAllowLoading(false);
-          props.setPage(1);
+          setFilter(option.current.value);
+          setToggleScrollLoading(false);
+          setAllowLoading(false);
+          setPage(1);
         }}
       >
         <p>
@@ -223,5 +224,12 @@ function Sort(props) {
     </>
   );
 }
+
+Sort.propTypes = {
+  setFilter: PropTypes.func,
+  setToggleScrollLoading: PropTypes.func,
+  setAllowLoading: PropTypes.func,
+  setPage: PropTypes.func,
+};
 
 export default Sort;

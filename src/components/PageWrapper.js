@@ -1,10 +1,44 @@
-import styled from "styled-components";
-import MoviesList from "./MoviesList";
-import Header from "./header/Header";
-import { useState, useRef, useCallback, useEffect } from "react";
-import { LinearProgress } from "@mui/material";
-import Sort from "./filter/Sort";
 import { BACKGROUND } from "../constants/style/StyleParams";
+import Header from "./header/Header";
+import { LinearProgress } from "@mui/material";
+import MoviesList from "./MoviesList";
+import styled from "styled-components";
+import Sort from "./filter/Sort";
+import { useState, useRef, useCallback, useEffect } from "react";
+
+const ContentSection = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+`;
+
+const ColumnWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: center;
+  align-content: flex-start;
+`;
+
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+`;
+
+const LoadingWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+`;
 
 const MainWrapper = styled.div`
   margin-bottom: 50px;
@@ -27,19 +61,6 @@ const MainTag = styled.main`
   margin-top: 64px;
 `;
 
-const ContentSection = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-  width: 100%;
-  box-sizing: border-box;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-`;
-
 const MediaWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -49,54 +70,35 @@ const MediaWrapper = styled.div`
   align-content: flex-start;
 `;
 
-const ColumnWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  justify-content: center;
-  align-content: flex-start;
-`;
-
 const Title = styled.div`
   width: 100%;
   margin-bottom: 20px;
 `;
 
-const Content = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  align-content: flex-start;
-`;
-
-const LoadingWrapper = styled.div`
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-`;
-
 function PageWrapper() {
+  const [allowLoading, setAllowLoading] = useState(false);
   const [filter, setFilter] = useState("popularity.desc");
   const [page, setPage] = useState(1);
-  const [isShowen, setIsShowen] = useState(true);
   const [progress, setProgress] = useState(0);
-
   const [toggleScrollLoading, setToggleScrollLoading] = useState(false);
-  const [allowLoading, setAllowLoading] = useState(false);
+  const test = useRef();
 
   const handleScrollLoading = useCallback(
     (e) => {
-      const window = e.currentTarget;
+      const windowTwo = e.currentTarget;
 
-      let top = e.target.documentElement.scrollTop;
-      let winH = window.innerHeight;
-      let overallH = e.target.documentElement.scrollHeight;
+      let top = window.pageYOffset;
+      let winH = windowTwo.innerHeight;
+      let overallH = test.current.clientHeight;
 
-      if (top + winH >= Math.round(overallH * 0.92)) {
+      console.log(top, winH, overallH);
+
+      if (top + winH >= overallH * 0.92) {
         setPage((prevpage) => prevpage + 1);
         setAllowLoading(false);
-        setTimeout(() => setAllowLoading(true), 300);
+        // setTimeout(() => setAllowLoading(true), 300);
       }
+      setAllowLoading(true)
     },
     [window]
   );
@@ -113,7 +115,7 @@ function PageWrapper() {
 
   return (
     <>
-      <MainWrapper>
+      <MainWrapper ref={test}>
         <Header />
         {progress !== 100 && (
           <LoadingWrapper>

@@ -1,20 +1,5 @@
+import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
 import styled from "styled-components";
-import { FONT, BACKGROUND } from "../../../constants/style/StyleParams";
-
-const MenuIcon = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 4;
-  opacity: 0.6;
-
-  & a {
-    color: ${FONT.color.black};
-    text-decoration: none;
-    font-weight: normal;
-    background: transparent;
-  }
-`;
 
 const InnerOptionsIcon = styled.div`
   font-size: 1.6em;
@@ -34,6 +19,21 @@ const InnerOptionsIcon = styled.div`
   background-repeat: no-repeat;
   color: inherit;
   box-sizing: border-box;
+`;
+
+const MenuIcon = styled.div`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  opacity: 0.6;
+
+  & a {
+    color: ${FONT.color.black};
+    text-decoration: none;
+    font-weight: normal;
+    background: transparent;
+  }
 `;
 
 function MoreOptionsMenu() {

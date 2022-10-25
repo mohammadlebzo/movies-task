@@ -1,17 +1,13 @@
-import styled from "styled-components";
 import { CircularProgress } from "@mui/material";
-import { FONT } from '../../../constants/style/StyleParams'
+import { FONT } from "../../constants/style/StyleParams";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-const ScoreWrapper = styled.div`
+const Canvas = styled.div`
+  background-color: transparent;
   position: absolute;
-  top: -19px;
-  left: 10px;
-  width: 38px;
-  height: 38px;
-  box-sizing: border-box;
-  display: inline-block;
-  transition: transform 0.2s;
-  transform: scale(1);
+  top: 0;
+  left: 0;
 `;
 
 const OuterRing = styled.div`
@@ -22,14 +18,6 @@ const OuterRing = styled.div`
   display: inline-block;
   border-radius: 50%;
   background-color: #081c22;
-`;
-
-const UserScore = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
 `;
 
 const Percent = styled.div`
@@ -52,27 +40,44 @@ const Percent = styled.div`
   }
 `;
 
-const Canvas = styled.div`
-  background-color: transparent;
+const ScoreWrapper = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -19px;
+  left: 10px;
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
+  display: inline-block;
+  transition: transform 0.2s;
+  transform: scale(1);
 `;
 
-function Score(props) {
+const UserScore = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+`;
+
+function Score({ score }) {
   return (
     <>
       <ScoreWrapper>
         <OuterRing>
           <UserScore>
             <Percent>
-              <span>{props.score !== 0 ? `${props.score * 10}%` : 'NA'}</span>
+              <span>{score !== 0 ? `${score * 10}%` : "NA"}</span>
             </Percent>
             <Canvas className="canvas">
               <CircularProgress
                 variant="determinate"
-                value={props.score * 10}
-                style={{ width: "34px", height: "34px", color:`${FONT.color.lightGreen}` }}
+                value={score * 10}
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  color: `${FONT.color.lightGreen}`,
+                }}
               />
             </Canvas>
           </UserScore>
@@ -80,6 +85,10 @@ function Score(props) {
       </ScoreWrapper>
     </>
   );
+}
+
+Score.propTypes = {
+  score: PropTypes.number
 }
 
 export default Score;

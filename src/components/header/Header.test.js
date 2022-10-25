@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import Header from "../../components/header/Header";
+import Header from "./Header";
+
+const { getByRole, getAllByRole } = screen;
 
 describe("Header component", () => {
   //   test("test", () => {
@@ -13,9 +14,7 @@ describe("Header component", () => {
   test("renders main header wrapper", () => {
     render(<Header />);
 
-    // global.window.scrollY
-
-    const headerWrapperElement = screen.getByRole("banner");
+    const headerWrapperElement = getByRole("banner");
 
     expect(headerWrapperElement).toBeInTheDocument();
   });
@@ -23,12 +22,12 @@ describe("Header component", () => {
   test("shows header on document when at top of document or when scrolling up to the top", () => {
     render(<Header />);
 
-    fireEvent.scroll(window, { target: { scrollY: 8 } });
+    fireEvent.scroll(window, { target: { scrollY: 2 } });
 
-    const headerWrapperElement = screen.getByRole("banner");
-    const headerVisibility = headerWrapperElement.getAttribute("visibility");
+    const headerWrapperElement = getByRole("banner");
+    const headerVisibility = headerWrapperElement.getAttribute("class");
 
-    expect(headerVisibility).toBe("1");
+    expect(headerVisibility).toMatch(/down/i);
   });
 
   test("hides the header from the document when scrolling down", () => {
@@ -36,16 +35,16 @@ describe("Header component", () => {
 
     fireEvent.scroll(window, { target: { scrollY: 20 } });
 
-    const headerWrapperElement = screen.getByRole("banner");
-    const headerVisibility = headerWrapperElement.getAttribute("visibility");
+    const headerWrapperElement = getByRole("banner");
+    const headerVisibility = headerWrapperElement.getAttribute("class");
 
-    expect(headerVisibility).toBe("0");
+    expect(headerVisibility).toMatch(/up/i);
   });
 
   test("renders the nav items list itself 'ul'", () => {
     render(<Header />);
 
-    const navListElements = screen.getAllByRole("list");
+    const navListElements = getAllByRole("list");
     navListElements.map((listElement) =>
       expect(listElement).toBeInTheDocument()
     );
@@ -54,14 +53,14 @@ describe("Header component", () => {
   test("renders the inner items of the nav items list 'ul'", () => {
     render(<Header />);
 
-    const navListItems = screen.getAllByRole("listitem");
+    const navListItems = getAllByRole("listitem");
     navListItems.map((navItem) => expect(navItem).toBeInTheDocument());
   });
 
   test("renders navagation elements", () => {
     render(<Header />);
 
-    const navlinkElements = screen.getAllByRole("link");
+    const navlinkElements = getAllByRole("link");
     navlinkElements.map((navLinkItem) =>
       expect(navLinkItem).toBeInTheDocument()
     );

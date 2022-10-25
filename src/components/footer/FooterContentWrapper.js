@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { FONT } from "../../constants/style/StyleParams";
+import styled from "styled-components";
 
 const ContentWrapper = styled.div`
   margin-right: 40px;

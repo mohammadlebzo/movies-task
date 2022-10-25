@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { IMAGE } from '../../constants/style/StyleParams'
+import styled from "styled-components";
 
 const LogoWrapper = styled.a`
   display: block;
