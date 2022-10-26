@@ -26,6 +26,10 @@ const HeaderEl = styled.header`
   &.up {
     top: -65px;
   }
+
+  @media screen and (max-width: 450px) {
+    width: 100vw;
+  }
 `;
 
 const NavWrapper = styled.div`
@@ -237,10 +241,10 @@ function Header() {
   const handleNavigation = useCallback(
     (e) => {
       const window = e.currentTarget;
-      currentScrollY = window.scrollY;
+      // let currentScrollY = window.scrollY;
       if (window.scrollY > 10) {
         setTestClass("up");
-        console.log(currentScrollY);
+        // console.log(currentScrollY);
       } else if (window.scrollY < 10) {
         setTestClass("down");
       }

@@ -7,7 +7,7 @@ const CardsWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  
+  flex-wrap: wrap;
 `;
 
 const LoadButton = styled.div`
@@ -51,33 +51,41 @@ const LoadButton = styled.div`
 `;
 
 const MainListWrapper = styled.div`
-  margin-left: 30px;
+  padding-left: 30px;
   background: transparent;
   padding-right: 0;
   width: calc(100vw - 80px - 268px);
   max-width: calc(1400px - 80px - 268px);
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
 
-  color: #000;
-  font-family: ${FONT.family.main};
-  font-size: 1em;
+  // margin-left: 30px;
+  // background: transparent;
+  // padding-right: 0;
+  // width: calc(100vw - 80px - 268px);
+  // max-width: calc(1400px - 80px - 268px);
+  // display: flex;
+  // flex-wrap: wrap;
+  // padding: 0;
 
-  & section:last-of-type {
-    padding-bottom: 0;
-  }
-
-  & section:first-of-type {
-    border-top: none;
-    padding-top: 0;
-  }
+  // color: #000;
+  // font-family: ${FONT.family.main};
+  // font-size: 1em;
 `;
 
 const MoviesSectionWrapper = styled.section`
   width: 100%;
   display: block;
   padding: 30px 0;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
 `;
 
 const MediaItems = styled.div`
@@ -98,7 +106,7 @@ function MoviesList({
       <MainListWrapper>
         <MoviesSectionWrapper>
           <MediaItems>
-            <CardsWrapper page={page} style={{flexWrap: "wrap"}}>
+            <CardsWrapper page={page}>
               <Card page={page} filter={filter} setProgress={setProgress} />
               {!toggleScrollLoading && (
                 <LoadButton>

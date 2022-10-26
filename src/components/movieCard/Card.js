@@ -17,6 +17,7 @@ const ContentWrapper = styled.div`
   align-content: flex-start;
   flex-wrap: wrap;
   align-items: flex-start;
+  
 
   & h2 {
     font-size: 1em;
