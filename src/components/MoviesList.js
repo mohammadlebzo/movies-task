@@ -1,5 +1,5 @@
 import Card from "./movieCard/Card";
-import { FONT } from "../constants/style/StyleParams";
+import { FONT, MEDIA } from "../constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -8,6 +8,10 @@ const CardsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media screen and (${MEDIA.mobile}) {
+    margin-top: 20px;
+  }
 `;
 
 const LoadButton = styled.div`
@@ -59,18 +63,19 @@ const MainListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  // margin-left: 30px;
-  // background: transparent;
-  // padding-right: 0;
-  // width: calc(100vw - 80px - 268px);
-  // max-width: calc(1400px - 80px - 268px);
-  // display: flex;
-  // flex-wrap: wrap;
-  // padding: 0;
+  color: #000;
+  font-family: ${FONT.family.main};
+  font-size: 1em;
 
-  // color: #000;
-  // font-family: ${FONT.family.main};
-  // font-size: 1em;
+  @media screen and (${MEDIA.mobile}) {
+    width: calc(100vw - 40px);
+    margin-top: 20px;
+    padding: 0;
+    max-width: 100vw;
+    height: auto;
+    min-height: 0;
+    justify-content: flex-start;
+  }
 `;
 
 const MoviesSectionWrapper = styled.section`
@@ -86,10 +91,27 @@ const MoviesSectionWrapper = styled.section`
     border-top: none;
     padding-top: 0;
   }
+
+  @media screen and (${MEDIA.mobile}) {
+    width: 100vw;
+    display: block;
+
+    &:last-of-type {
+      padding: 0;
+    } 
+    
+    &:first-of-type {
+      border-top: none;
+    } 
+  }
 `;
 
 const MediaItems = styled.div`
   margin-top: -30px;
+
+  @media screen and (${MEDIA.mobile}) {
+    margin: 0;
+  }
 `;
 
 function MoviesList({

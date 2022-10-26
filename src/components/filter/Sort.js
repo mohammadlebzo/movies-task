@@ -1,4 +1,4 @@
-import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import { FONT, BACKGROUND, MEDIA, BORDER } from "../../constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useState, useRef } from "react";
@@ -43,19 +43,24 @@ const CardController = styled.div`
 const FilterSortCard = styled.div`
   min-width: 260px;
   width: 260px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid ${BORDER.color.lightGray};
   border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
   background-color: #fff;
+
+  @media screen and (${MEDIA.mobile}) {
+    min-width: 100%;
+    width: 100%;
+  }
 `;
 
 const FilterContainer = styled.div`
   width: 100%;
-  border-top: 1px solid #eee;
+  border-top: 1px solid ${BORDER.color.veryLightGray};
   padding: 14px 16px 16px 16px;
 
   & h3 {

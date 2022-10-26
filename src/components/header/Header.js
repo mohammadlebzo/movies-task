@@ -1,4 +1,9 @@
-import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import {
+  FONT,
+  BACKGROUND,
+  IMAGE,
+  MEDIA,
+} from "../../constants/style/StyleParams";
 import Logo from "./Logo";
 import styled from "styled-components";
 import { useState, useEffect, useCallback } from "react";
@@ -7,6 +12,12 @@ const Content = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
+  @media screen and (${MEDIA.mobile}) {
+    width: 100%;
+    overflow: hidden;
+    animation: none;
+  }
 `;
 
 const HeaderEl = styled.header`
@@ -27,9 +38,17 @@ const HeaderEl = styled.header`
     top: -65px;
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (${MEDIA.mobile}) {
     width: 100vw;
   }
+`;
+
+const LogoMobile = styled.li`
+  justify-content: center;
+  width: 33%;
+  display: flex;
+  align-items: center;
+  align-content: center;
 `;
 
 const NavWrapper = styled.div`
@@ -41,6 +60,10 @@ const NavWrapper = styled.div`
   max-width: 1400px;
   width: 100%;
   padding: 0 40px;
+
+  @media screen and (${MEDIA.mobile}) {
+    padding: 0 20px;
+  }
 `;
 
 const NavList = styled.ul`
@@ -156,6 +179,73 @@ const NavList = styled.ul`
   }
 `;
 
+const NavListMobile = styled.ul`
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0;
+  align-items: center;
+  list-style-type: none;
+
+  & span {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1em;
+    min-height: 1em;
+    width: 1em;
+    height: 1em;
+    line-height: inherit;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: inherit;
+    box-sizing: border-box;
+  }
+
+  & div {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    & li:first-child {
+      display: flex;
+      align-items: center;
+      align-content: center;
+
+      & span {
+        background-image: url(${BACKGROUND.iconURL.user});
+        filter: invert(1);
+        font-size: 1.4em;
+      }
+    }
+
+    & li:last-child {
+      margin-left: 14px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+
+      & a {
+        font-size: 1.5em;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        align-content: center;
+
+        & span {
+          background-image: url(${BACKGROUND.iconURL.search});
+        }
+      }
+    }
+  }
+`;
+
 const PlusItem = styled.span`
   background-image: url(${BACKGROUND.iconURL.plus});
   background-color: transparent;
@@ -183,6 +273,46 @@ const SubMedia = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   overflow: visible;
+
+  @media screen and (max-width: 412px) {
+    display: none;
+  }
+`;
+
+const SubMediaMobile = styled.div`
+  display: none;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: visible;
+  width: 100%;
+
+  @media screen and (${MEDIA.mobile}) {
+    display: flex;
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    background: transparent;
+  }
+`;
+
+const SideMenu = styled.li`
+  width: 33%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+
+  & span {
+    background-image: url(${BACKGROUND.iconURL.sideMenu});
+    filter: invert(1);
+    font-size: 1.4em;
+  }
 `;
 
 const SearchItem = styled.span`
@@ -236,20 +366,30 @@ const TranslateItem = styled.li`
 `;
 
 function Header() {
-  const [testClass, setTestClass] = useState("down");
+  const [headClassOnScroll, setheadClassOnScroll] = useState("down");
+  let lastScrollTop = 0;
 
   const handleNavigation = useCallback(
     (e) => {
-      const window = e.currentTarget;
-      // let currentScrollY = window.scrollY;
-      if (window.scrollY > 10) {
-        setTestClass("up");
-        // console.log(currentScrollY);
-      } else if (window.scrollY < 10) {
-        setTestClass("down");
+      
+      // const window = e.currentTarget;
+      // // let currentScrollY = window.scrollY;
+      // if (window.scrollY > 10) {
+      //   setheadClassOnScroll("up");
+      //   // console.log(currentScrollY);
+      // } else if (window.scrollY < 10) {
+      //   setheadClassOnScroll("down");
+      // }
+
+      let st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) {
+        setheadClassOnScroll("up");
+      } else {
+        setheadClassOnScroll("down");
       }
+      lastScrollTop = st <= 0 ? 0 : st;
     },
-    [window.scrollY]
+    [window]
   );
 
   useEffect(() => {
@@ -262,7 +402,7 @@ function Header() {
 
   return (
     <>
-      <HeaderEl className={testClass}>
+      <HeaderEl className={headClassOnScroll}>
         <Content>
           <NavWrapper>
             <SubMedia>
@@ -334,6 +474,32 @@ function Header() {
                 </li>
               </NavList>
             </SubMedia>
+            <SubMediaMobile>
+              <NavListMobile>
+                <SideMenu>
+                  <a href="">
+                    <span></span>
+                  </a>
+                </SideMenu>
+                <LogoMobile>
+                  <a href="">
+                    <img src={IMAGE.footerLogo} alt="" width={55} height={40} />
+                  </a>
+                </LogoMobile>
+                <div>
+                  <li>
+                    <a href="">
+                      <span></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <span></span>
+                    </a>
+                  </li>
+                </div>
+              </NavListMobile>
+            </SubMediaMobile>
           </NavWrapper>
         </Content>
       </HeaderEl>

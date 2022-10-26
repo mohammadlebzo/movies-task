@@ -1,5 +1,10 @@
 import FooterContentWrapper from "./FooterContentWrapper";
-import { IMAGE, FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import {
+  IMAGE,
+  FONT,
+  BACKGROUND,
+  MEDIA,
+} from "../../constants/style/StyleParams";
 import styled from "styled-components";
 
 const FooterEl = styled.footer`
@@ -24,6 +29,12 @@ const FooterEl = styled.footer`
   align-content: space-between;
   justify-content: center;
 
+  @media screen and (${MEDIA.mobile}) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: auto;
+  }
+
   & section {
     display: flex;
     justify-content: center;
@@ -42,6 +53,16 @@ const FooterLogo = styled.div`
 
   & a {
     text-decoration: none;
+  }
+
+  @media screen and (${MEDIA.mobile}) {
+    top: 0;
+    width: 100%;
+    padding-bottom: 20px;
+    word-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    text-align: left;
   }
 `;
 
@@ -62,6 +83,11 @@ const JoinButton = styled.a`
   border-radius: 5px;
   padding: 8px 16px;
   transition: linear 0.1s;
+
+  @media screen and (${MEDIA.mobile}) {
+    top: 0;
+    padding: 8px 16px;
+  }
 `;
 
 const NavWrapper = styled.nav`
@@ -84,6 +110,17 @@ const NavWrapper = styled.nav`
     top: 0;
     right: 0;
   }
+
+  @media screen and (${MEDIA.mobile}) {
+    width: 100%;
+    display: block;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    & div img {
+      display: none;
+    }
+  }
 `;
 
 function Footer() {
@@ -91,7 +128,13 @@ function Footer() {
     <FooterEl>
       <NavWrapper>
         <FooterLogo>
-          <img src={IMAGE.footerLogo} alt="" width={130} height={94} />
+          <img
+            className="test"
+            src={IMAGE.footerLogo}
+            alt=""
+            width={130}
+            height={94}
+          />
           <JoinButton href="">Join the Community</JoinButton>
         </FooterLogo>
         <FooterContentWrapper />

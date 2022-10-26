@@ -1,4 +1,4 @@
-import { BACKGROUND } from "../constants/style/StyleParams";
+import { BACKGROUND, MEDIA } from "../constants/style/StyleParams";
 import Header from "./header/Header";
 import { LinearProgress } from "@mui/material";
 import MoviesList from "./MoviesList";
@@ -25,6 +25,28 @@ const ColumnWrapper = styled.div`
   width: 100%;
   justify-content: center;
   align-content: flex-start;
+
+  @media screen and (${MEDIA.mobile}) {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  flex-wrap: wrap;
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  @media screen and (${MEDIA.mobile}) {
+    padding: 20px;
+  }
 `;
 
 const Content = styled.div`
@@ -32,6 +54,10 @@ const Content = styled.div`
   display: flex;
   align-items: flex-start;
   align-content: flex-start;
+
+  @media screen and (${MEDIA.mobile}) {
+    flex-wrap: wrap;
+  }
 `;
 
 const LoadingWrapper = styled.div`
@@ -68,6 +94,11 @@ const MediaWrapper = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: flex-start;
+
+  @media screen and (${MEDIA.mobile}) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 `;
 
 const Title = styled.div`
@@ -98,7 +129,7 @@ function PageWrapper() {
         setAllowLoading(false);
         // setTimeout(() => setAllowLoading(true), 300);
       }
-      setAllowLoading(true)
+      setAllowLoading(true);
     },
     [window]
   );
@@ -127,7 +158,7 @@ function PageWrapper() {
           <ContentSection>
             <MediaWrapper>
               <ColumnWrapper>
-                <div>
+                <ContentWrapper>
                   <Title>
                     <h2>Popular Movies</h2>
                   </Title>
@@ -154,7 +185,7 @@ function PageWrapper() {
                       />
                     </div>
                   </Content>
-                </div>
+                </ContentWrapper>
               </ColumnWrapper>
             </MediaWrapper>
           </ContentSection>

@@ -1,4 +1,4 @@
-import { IMAGE } from '../../constants/style/StyleParams'
+import { IMAGE } from "../../constants/style/StyleParams";
 import styled from "styled-components";
 
 const LogoWrapper = styled.a`
@@ -6,18 +6,17 @@ const LogoWrapper = styled.a`
   margin-right: 16px;
   width: 154px;
   height: 20px;
+
+  @media screen and (max-width: 412px) {
+    display: none;
+  }
 `;
 
 function Logo() {
   return (
     <>
       <LogoWrapper href="">
-        <img
-          src={IMAGE.headerLogo}
-          alt=""
-          width={154}
-          height={20}
-        />
+        <img src={IMAGE.headerLogo} alt="" width={154} height={20} />
       </LogoWrapper>
     </>
   );
