@@ -1,4 +1,4 @@
-import { DEFAULT_IMG_PATH, IMAGE_URL_START } from "../../constants/Defults";
+import { IMAGE_URL_START } from "../../constants/Defults";
 import {
   FONT,
   BACKGROUND,
@@ -42,7 +42,7 @@ const ContentWrapper = styled.div`
     font-size: 1em;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.6);
+    color: ${FONT.color.veryLightBlack};
     box-sizing: border-box;
   }
 
@@ -62,74 +62,6 @@ const ContentWrapperMobile = styled.div`
     flex-wrap: wrap;
     width: 100%;
     box-sizing: border-box;
-
-    & .wrapper {
-      align-items: flex-start;
-      display: flex;
-      width: 100%;
-
-      & .title {
-        width: 100%;
-        display: flex;
-        align-items: baseline;
-        overflow: hidden;
-
-        & a {
-          display: inline-block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: ${FONT.color.white};
-          text-decoration: none;
-          font-weight: normal;
-
-          & h2 {
-            display: block;
-            font-size: 1em;
-            margin: 0;
-            white-space: normal;
-            overflow: visible;
-            line-height: 1.2em;
-            line-clamp: 1;
-            box-orient: vertical;
-            width: 100%;
-            padding: 0;
-            font-weight: 600;
-            box-sizing: border-box;
-            color: ${FONT.color.black};
-          }
-        }
-      }
-      
-      & span {
-        margin-left: 0;
-        font-size: 0.9em;
-        white-space: nowrap;
-        color: #999;
-      }
-    }
-
-    & .overview {
-      max-height: 3.2em;
-      height: auto;
-      margin-top: 20px;
-
-      & p {
-        font-size: 0.9em;
-        line-height: 1.2em;
-        display: -webkit-box;
-        line-clamp: 2;
-        box-orient: vertical;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        margin: 0;
-        color: ${FONT.color.black};
-
-        padding-left: 0;
-        padding-right: 0;
-        box-sizing: border-box;
-      }
-    }
   }
 `;
 
@@ -144,13 +76,19 @@ const HoverWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${BACKGROUND.color.veryLightBlack_Dot5};
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: ${BORDER.radius.default};
   z-index: 5;
   transition: linear 0.1s;
   opacity: 0;
+`;
+
+const InnerContentWrapperMobile = styled.div`
+  align-items: flex-start;
+  display: flex;
+  width: 100%;
 `;
 
 const ImageSection = styled.div`
@@ -207,7 +145,7 @@ const ImageWrapper = styled.div`
       height: 100%;
       outline: none;
       border: 0;
-      border-radius: 6px 0 0 6px;
+      border-radius: ${BORDER.radius.mobile} 0 0 ${BORDER.radius.mobile};
     }
   }
 
@@ -236,13 +174,13 @@ const MovieCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  border: 1px solid #e3e3e3;
-  border-radius: 8px;
+  border: 1px solid ${BORDER.color.lightGray};
+  border-radius: ${BORDER.radius.default} ;
   overflow: hidden;
   margin-top: 30px;
   width: calc((100vw - 80px - 260px - (30px * 5)) / 5);
   max-width: calc((1400px - 80px - 260px - (30px * 5)) / 5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
   background-color: ${BACKGROUND.color.white};
 
   @media screen and (${MEDIA.renderFourCards}) {
@@ -278,14 +216,79 @@ const MovieCardWrapperMobile = styled.div`
     display: flex;
     margin-top: 20px;
     width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: ${BORDER.radius.mobile};
+    box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
     border: 1px solid ${BORDER.color.lightGray};
     background-color: ${BACKGROUND.color.white};
 
     &:first-of-type {
       margin-top: 0;
     }
+  }
+`;
+
+const OverviewMobile = styled.div`
+  max-height: 3.2em;
+  height: auto;
+  margin-top: 20px;
+
+  & p {
+    font-size: 0.9em;
+    line-height: 1.2em;
+    display: -webkit-box;
+    line-clamp: 2;
+    box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    color: ${FONT.color.black};
+
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+`;
+
+const TitleWrapperMobile = styled.div`
+  width: 100%;
+  align-items: baseline;
+  overflow: hidden;
+
+  & div {
+    width: 100%;
+    line-height: 100%;
+
+    & a {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: ${FONT.color.white};
+      text-decoration: none;
+      font-weight: normal;
+
+      & h2 {
+        display: block;
+        font-size: 1em;
+        margin: 0;
+        white-space: normal;
+        overflow: visible;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        width: 100%;
+        padding: 0;
+        font-weight: 600;
+        box-sizing: border-box;
+        color: ${FONT.color.black};
+      }
+    }
+  }
+
+  & span {
+    margin-left: 0;
+    font-size: 0.9em;
+    white-space: nowrap;
+    color: ${FONT.color.mediumLightGray};
   }
 `;
 
@@ -302,13 +305,14 @@ function Card({ filter, page, setProgress }) {
         return response.json();
       })
       .then((data) => {
-        // setProgress(45);
-
         return data.results.map((item) => {
           return {
             id: item.id,
             title: item.title,
-            overview: item.overview.length < 85 ? item.overview : `${item.overview.substring(0, 73)}...`,
+            overview:
+              item.overview.length < 85
+                ? item.overview
+                : `${item.overview.substring(0, 73)}...`,
             date: item.release_date,
             image: IMAGE_URL_START + item.poster_path,
             score: item.vote_average,
@@ -332,27 +336,28 @@ function Card({ filter, page, setProgress }) {
       });
   }, [page, filter]);
 
-  return (
-    <>
-      {fetchedMovies.map((movie) => {
+  return fetchedMovies.map((movie) => {
+        let mobileVersionDate = `${new Date(movie.date).toLocaleString(
+          "default",
+          { month: "long", day: "numeric" }
+        )}, ${new Date(movie.date).toLocaleString("default", {
+          year: "numeric",
+        })}`;
         let imageSource;
 
         if (movie.image !== `${IMAGE_URL_START}null`) {
           imageSource = movie.image;
         }
-        // else if (movie.backdrop_path !== `${IMAGE_URL_START}null`) {
-        //   imageSource = movie.backdrop_path;
-        // }
 
         return (
-          <>
-            <MovieCardWrapper key={movie.id}>
+          <div  key={movie["id"]}>
+            <MovieCardWrapper key={movie["id"]}>
               <ImageSection>
                 <ImageWrapper>
                   <a href="">
                     {toggle && (
                       <img
-                        placeholder="fetchIndecator"
+                        data-testid="custom-element"
                         src={imageSource}
                         alt={
                           !toggle
@@ -386,7 +391,7 @@ function Card({ filter, page, setProgress }) {
                     <a href="">
                       {toggle && (
                         <img
-                          placeholder="fetchIndecator"
+                          data-testid="custom-element"
                           src={imageSource}
                           alt={
                             !toggle
@@ -399,31 +404,31 @@ function Card({ filter, page, setProgress }) {
                   </ImageWrapper>
                 </ImageSection>
                 <ContentWrapperMobile>
-                  <div className="wrapper">
-                    <div className="title">
+                  <InnerContentWrapperMobile>
+                    <TitleWrapperMobile>
                       <div>
                         <a href="">
-                          <h2>{!toggle ? "name" : movie.title}</h2>
+                          <h2>{movie?.title ??  "name"}</h2>
                         </a>
                       </div>
-                    </div>
-                    <span>{!toggle ? "00-00-0000" : movie.date}</span>
-                  </div>
 
-                  <div className="overview">
+                      <span>
+                        {!toggle ? "may 00, 0000" : mobileVersionDate}
+                      </span>
+                    </TitleWrapperMobile>
+                  </InnerContentWrapperMobile>
+
+                  <OverviewMobile>
                     <p>{!toggle ? "overview" : movie.overview}</p>
-                  </div>
+                  </OverviewMobile>
                 </ContentWrapperMobile>
               </CardDetailsWrapper>
             </MovieCardWrapperMobile>
 
             {/* Mobile render */}
-          </>
+          </div>
         );
       })}
-    </>
-  );
-}
 
 Card.propTypes = {
   filter: PropTypes.string,

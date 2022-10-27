@@ -10,7 +10,6 @@ const { getByRole, getAllByRole } = screen;
 // };
 
 describe("Sort component", () => {
-
   test("renders the headings", () => {
     render(<Sort />);
 
@@ -45,7 +44,10 @@ describe("Sort component", () => {
     render(<Sort />);
 
     const comboBox = getByRole("combobox");
-    userEvent.selectOptions(comboBox, getByRole("option", { name: "Rating Descending" }));
+    userEvent.selectOptions(
+      comboBox,
+      getByRole("option", { name: "Rating Descending" })
+    );
 
     const searchButton = getByRole("link");
     const buttonClass =

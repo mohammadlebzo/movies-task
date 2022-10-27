@@ -1,5 +1,5 @@
 import { CircularProgress } from "@mui/material";
-import { FONT } from "../../constants/style/StyleParams";
+import { BACKGROUND, FONT } from "../../constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -17,7 +17,7 @@ const OuterRing = styled.div`
   padding: 2px;
   display: inline-block;
   border-radius: 50%;
-  background-color: #081c22;
+  background-color: ${BACKGROUND.color.darkBluePlus};
 `;
 
 const Percent = styled.div`
@@ -27,16 +27,23 @@ const Percent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const PercentText = styled.span`
+  padding-top: 1px;
+  padding-right: 5px;
+  font-size: 0.7em;
+  color: ${FONT.color.white};
+  font-family: "Consensus" !important;
+  font-style: normal;
+  font-weight: bold;
+  font-variant: normal;
 
   & span {
-    padding-top: 1px;
-    padding-left: 1px;
     font-size: 0.6em;
-    color: ${FONT.color.white};
-    font-family: "Consensus" !important;
-    font-style: normal;
-    font-weight: bold;
-    font-variant: normal;
+    position: absolute;
+    top: 10px;
+    right: 5px;
   }
 `;
 
@@ -60,6 +67,33 @@ const UserScore = styled.div`
   text-align: center;
 `;
 
+// const TestLoader = styled.div`
+//   // width: 50px;
+//   width: 34px;
+//   height: 34px;
+//   background-color: transparent;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+
+//   & > * {
+//     background-color: transparent;
+//   }
+
+//   & svg {
+//     transform: rotate(1000deg);
+//   }
+
+//   & circle {
+//     fill: none;
+//     stroke: green;
+//     stroke-width: 4.4px;
+//     stroke-linecap: round;
+//     stroke-dasharray: ${props => props.percent * 2.1}, 100;
+//     stroke-dashoffset: 60;
+//   }
+// `;
+
 function Score({ score }) {
   return (
     <>
@@ -67,19 +101,29 @@ function Score({ score }) {
         <OuterRing>
           <UserScore>
             <Percent>
-              <span>{score !== 0 ? `${score * 10}%` : "NA"}</span>
+              <PercentText>
+                {score !== 0 ? `${score * 10}` : "NA"}
+                <span>{score !== 0 ? "%" : ""}</span>
+              </PercentText>
             </Percent>
-            <Canvas className="canvas">
+            <Canvas>
               <CircularProgress
                 variant="determinate"
                 value={score * 10}
                 style={{
                   width: "34px",
                   height: "34px",
-                  color: `${FONT.color.lightGreen}`,
+                  color: `${
+                    score * 10 < 70 ? FONT.color.pumpkin : FONT.color.lightGreen
+                  }`,
                 }}
               />
             </Canvas>
+            {/* <TestLoader percent={score * 10}>
+              <svg viewBox="22 30 50 50">
+                <circle cx="46" cy="54" r="22.6" fill="none" ></circle>
+              </svg>
+            </TestLoader> */}
           </UserScore>
         </OuterRing>
       </ScoreWrapper>
@@ -88,7 +132,7 @@ function Score({ score }) {
 }
 
 Score.propTypes = {
-  score: PropTypes.number
-}
+  score: PropTypes.number,
+};
 
 export default Score;

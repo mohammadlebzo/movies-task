@@ -5,13 +5,6 @@ import Header from "./Header";
 const { getByRole, getAllByRole } = screen;
 
 describe("Header component", () => {
-  //   test("test", () => {
-  //     render(<Header />);
-
-  //     const testElement = screen.getByRole("");
-  //     expect(testElement).toBeInTheDocument();
-  //   });
-
   test("renders main header wrapper", () => {
     render(<Header />);
 
@@ -20,33 +13,25 @@ describe("Header component", () => {
     expect(headerWrapperElement).toBeInTheDocument();
   });
 
-  // test("shows header on document when at top of document or when scrolling up to the top", () => {
-  //   render(<Header />);
+  test("shows header on document when at top of document or when scrolling up to the top", () => {
+    render(<Header />);
 
-  //   // fireEvent.scroll(window, { target: { scrollY: 10 } });
-  //   // fireEvent.scroll(window, { target: { scrollY: 0 } });
+    fireEvent.scroll(window, { target: { scrollY: 10 } });
+    fireEvent.scroll(window, { target: { scrollY: 0 } });
 
-  //   const headerWrapperElement = getByRole("banner");
-  //   const headerVisibility = headerWrapperElement.getAttribute("class");
+    const headerWrapperElement = getByRole("banner");
+    const headerVisibility = headerWrapperElement.getAttribute("class");
 
-  //   expect(headerVisibility).toMatch(/down/i);
-  // });
+    expect(headerVisibility).toMatch(/down/i);
+  });
 
   // test("hides the header from the document when scrolling down", () => {
   //   render(<Header />);
 
-  //   // window.scrollY = 2
-    
-
   //   const headerWrapperElement = getByRole("banner");
   //   const headerVisibility = headerWrapperElement.getAttribute("class");
 
-  //   window.pageYOffset = 5
-  //   document.documentElement.scrollTop = 8
-
-  //   // userEvent.keyboard("{arrowdown}")
-  //   console.log(window.pageYOffset);
-  //   console.log(document.documentElement.scrollTop);
+  //   global.screenTop = 6;
 
   //   expect(headerVisibility).toMatch(/up/i);
   // });

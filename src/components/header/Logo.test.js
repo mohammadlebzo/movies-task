@@ -4,29 +4,28 @@ import Logo from "../../components/header/Logo";
 
 const { getByRole } = screen;
 
-describe('Logo component', () => {
-  test('renders the logo image', () => {
+describe("Logo component", () => {
+  test("renders the logo image", () => {
     render(<Logo />);
 
-    const imgElement = getByRole('img');
+    const imgElement = getByRole("img");
     expect(imgElement).toBeInTheDocument();
   });
 
-  test('renders the image clickable link', () => {
+  test("renders the image clickable link", () => {
     render(<Logo />);
 
-    const linkElement = getByRole('link');
+    const linkElement = getByRole("link");
     expect(linkElement).toBeInTheDocument();
   });
 
-  test('redirect to the home when the image is clicked', () => {
-    render(<Logo />)
+  test("redirect to the home when the image is clicked", () => {
+    render(<Logo />);
 
     const currentURL = global.window.location.href;
-    const linkElement = getByRole('link');
-    userEvent.click(linkElement)
+    const linkElement = getByRole("link");
+    userEvent.click(linkElement);
 
-    expect(currentURL).toBe('http://localhost/')
-
-  })
+    expect(currentURL).toBe("http://localhost/");
+  });
 });

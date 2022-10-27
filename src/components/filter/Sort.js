@@ -1,4 +1,9 @@
-import { FONT, BACKGROUND, MEDIA, BORDER } from "../../constants/style/StyleParams";
+import {
+  FONT,
+  BACKGROUND,
+  MEDIA,
+  BORDER,
+} from "../../constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useState, useRef } from "react";
@@ -44,13 +49,13 @@ const FilterSortCard = styled.div`
   min-width: 260px;
   width: 260px;
   border: 1px solid ${BORDER.color.lightGray};
-  border-radius: 8px;
+  border-radius: ${BORDER.noraml};
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: hidden;
   box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
-  background-color: #fff;
+  background-color: ${BACKGROUND.color.white};
 
   @media screen and (${MEDIA.mobile}) {
     min-width: 100%;
@@ -78,7 +83,6 @@ const FilterContainer = styled.div`
     font-family: ${FONT.family.main};
     border-width: 0;
     outline: 0;
-    background: 0 0;
     box-sizing: border-box;
     line-height: 1.5;
     text-align: left;
@@ -94,7 +98,7 @@ const FilterContainer = styled.div`
     box-shadow: none;
     color: inherit;
 
-    background-color: #e4e7eb;
+    background-color: ${BACKGROUND.color.grayBG1_base};
     border-radius: 4px;
 
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
@@ -104,7 +108,7 @@ const FilterContainer = styled.div`
   }
 
   & select:hover {
-    background-color: #ced3db;
+    background-color: ${BACKGROUND.color.grayBG1_hover};
   }
 `;
 
@@ -130,7 +134,7 @@ const SearchButton = styled.div`
     box-sizing: border-box;
 
     & a {
-      color: rgba(0, 0, 0, 0.5);
+      color: ${FONT.color.veryLightBlack};
       font-size: 1.2em;
       line-height: 1;
       font-weight: 600;
@@ -157,10 +161,10 @@ const SearchButton = styled.div`
   }
 
   &.off {
-    background-color: rgba(228, 228, 228, 0.7);
+    background-color: ${BACKGROUND.color.grayBG1_base};
 
     & a {
-      color: rgba(0, 0, 0, 0.5);
+      color: ${FONT.color.veryLightBlack};
     }
   }
 `;

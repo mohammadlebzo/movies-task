@@ -8,7 +8,10 @@ const FONT = {
     darkBlue: "#0d253f",
     lightBlue: "#01b4e4",
     lightGreen: "#90cea1",
-    graysh: "#212529",
+    grayF1: "#212529",
+    pumpkin: "#d2d531",
+    veryLightBlack: "rgba(0, 0, 0, 0.5)",
+    mediumLightGray: "#999",
   },
   weight: {
     bold: "bold",
@@ -20,10 +23,14 @@ const BACKGROUND = {
   color: {
     white: "#fff",
     black: "#000",
-    veryLightBlack: "rgba(0, 0, 0, 0, 1)",
+    veryLightBlack: "rgba(0, 0, 0, 0.1)",
     darkBlue: "#0d253f",
+    darkBluePlus: "#081c22",
     lightBlue: "#01b4e4",
     lightGreen: "#90cea1",
+    grayBG1_base: "#e4e7eb",
+    grayBG1_hover: "#ced3db",
+    veryLightBlack_Dot5: "rgba(0, 0, 0, 0.5)",
   },
   iconURL: {
     plus: "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-371-plus-white-0bac34f16124808a12ea863b4d9cc6e599dee7c0a80658cfe9ead26939e64517.svg",
@@ -42,8 +49,11 @@ const BACKGROUND = {
 const BORDER = {
   color: {
     lightGray: "#e3e3e3",
-    veryLightGray: "#eee"
-
+    veryLightGray: "#eee",
+  },
+  radius: {
+    default: "8px",
+    mobile: "6px",
   },
 };
 

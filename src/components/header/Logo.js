@@ -1,4 +1,4 @@
-import { IMAGE } from "../../constants/style/StyleParams";
+import { IMAGE, MEDIA } from "../../constants/style/StyleParams";
 import styled from "styled-components";
 
 const LogoWrapper = styled.a`
@@ -7,7 +7,7 @@ const LogoWrapper = styled.a`
   width: 154px;
   height: 20px;
 
-  @media screen and (max-width: 412px) {
+  @media screen and (${MEDIA.mobile}) {
     display: none;
   }
 `;

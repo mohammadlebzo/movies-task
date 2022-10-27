@@ -8,15 +8,13 @@ describe("Card component", () => {
     render(<Card />);
 
     const linkElements = getAllByRole("link");
-    linkElements.map(link => expect(link).toBeInTheDocument())
+    linkElements.map((link) => expect(link).toBeInTheDocument());
   });
 
   test("renders all heading elements", () => {
     render(<Card />);
 
     const headingElements = getAllByRole("heading");
-    headingElements.map(heading => expect(heading).toBeInTheDocument())
+    headingElements.map((heading) => expect(heading).toBeInTheDocument());
   });
-
-
 });

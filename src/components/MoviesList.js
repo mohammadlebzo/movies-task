@@ -98,11 +98,11 @@ const MoviesSectionWrapper = styled.section`
 
     &:last-of-type {
       padding: 0;
-    } 
-    
+    }
+
     &:first-of-type {
       border-top: none;
-    } 
+    }
   }
 `;
 

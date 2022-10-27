@@ -101,6 +101,12 @@ const MediaWrapper = styled.div`
   }
 `;
 
+const SortWrapperMobile = styled.div`
+  @media screen and (${MEDIA.mobile}) {
+    width: 100%;
+  }
+`;
+
 const Title = styled.div`
   width: 100%;
   margin-bottom: 20px;
@@ -112,7 +118,7 @@ function PageWrapper() {
   const [page, setPage] = useState(1);
   const [progress, setProgress] = useState(0);
   const [toggleScrollLoading, setToggleScrollLoading] = useState(false);
-  const test = useRef();
+  const mainBody = useRef();
 
   const handleScrollLoading = useCallback(
     (e) => {
@@ -120,14 +126,11 @@ function PageWrapper() {
 
       let top = window.pageYOffset;
       let winH = windowTwo.innerHeight;
-      let overallH = test.current.clientHeight;
-
-      console.log(top, winH, overallH);
+      let overallH = mainBody.current.clientHeight;
 
       if (top + winH >= overallH * 0.92) {
         setPage((prevpage) => prevpage + 1);
         setAllowLoading(false);
-        // setTimeout(() => setAllowLoading(true), 300);
       }
       setAllowLoading(true);
     },
@@ -146,7 +149,7 @@ function PageWrapper() {
 
   return (
     <>
-      <MainWrapper ref={test}>
+      <MainWrapper ref={mainBody}>
         <Header />
         {progress !== 100 && (
           <LoadingWrapper>
@@ -164,14 +167,14 @@ function PageWrapper() {
                   </Title>
 
                   <Content>
-                    <div>
+                    <SortWrapperMobile>
                       <Sort
                         setFilter={setFilter}
                         setToggleScrollLoading={setToggleScrollLoading}
                         setAllowLoading={setAllowLoading}
                         setPage={setPage}
                       />
-                    </div>
+                    </SortWrapperMobile>
 
                     <div>
                       <MoviesList

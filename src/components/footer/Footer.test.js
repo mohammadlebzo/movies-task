@@ -5,13 +5,6 @@ import Footer from "./Footer";
 const { getByRole, getAllByRole } = screen;
 
 describe("Footer component", () => {
-  //   test("test", () => {
-  //     render(<Footer />);
-
-  //     const testElement = screen.getByRole("");
-  //     expect(testElement).toBeInTheDocument();
-  //   });
-
   test("renders the footer wrapper", () => {
     render(<Footer />);
 

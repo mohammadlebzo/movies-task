@@ -4,7 +4,6 @@ import Score from "./Score";
 const { getByRole } = screen;
 
 describe("Score component", () => {
-
   test("renders the score progress bar", () => {
     render(<Score />);
 

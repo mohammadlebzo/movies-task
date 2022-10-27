@@ -139,7 +139,7 @@ const NavList = styled.ul`
 
         box-shadow: none;
         border-color: rgba(0, 0, 0, 0.15);
-        color: ${FONT.color.graysh};
+        color: ${FONT.color.grayF1};
         background-color: ${FONT.color.white};
         margin: 0;
         padding: 0.5rem 0;
@@ -172,7 +172,7 @@ const NavList = styled.ul`
           text-decoration: none;
           outline: 0;
           cursor: pointer;
-          background-color: rgb(244, 244, 244);
+          background-color: ${BACKGROUND.color.lightBlue};
         }
       }
     }
@@ -274,7 +274,7 @@ const SubMedia = styled.div`
   align-items: center;
   overflow: visible;
 
-  @media screen and (max-width: 412px) {
+  @media screen and (${MEDIA.mobile}) {
     display: none;
   }
 `;
@@ -295,7 +295,7 @@ const SubMediaMobile = styled.div`
     display: flex;
     align-items: center;
     align-content: center;
-    color: #fff;
+    color: ${FONT.color.white};
     font-weight: 600;
     text-decoration: none;
     background: transparent;
@@ -371,16 +371,6 @@ function Header() {
 
   const handleNavigation = useCallback(
     (e) => {
-      
-      // const window = e.currentTarget;
-      // // let currentScrollY = window.scrollY;
-      // if (window.scrollY > 10) {
-      //   setheadClassOnScroll("up");
-      //   // console.log(currentScrollY);
-      // } else if (window.scrollY < 10) {
-      //   setheadClassOnScroll("down");
-      // }
-
       let st = window.pageYOffset || document.documentElement.scrollTop;
       if (st > lastScrollTop) {
         setheadClassOnScroll("up");
@@ -474,6 +464,7 @@ function Header() {
                 </li>
               </NavList>
             </SubMedia>
+
             <SubMediaMobile>
               <NavListMobile>
                 <SideMenu>
