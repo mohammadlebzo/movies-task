@@ -1,71 +1,68 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PageWrapper from "./PageWrapper";
-import {
-  IMAGE_URL_START,
-  TESTJSON,
-} from "../constants/Defults";
+import { IMAGE_URL_START, TESTJSON } from "../constants/Defults";
+import { act } from "react-dom/test-utils";
 
-const { getByRole, findAllByTestId } = screen;
+const { getByRole, findAllByAltText } = screen;
 const elements = {
-  loadLink: ()=> getByRole("link", { name: "Load More" }),
+  loadLink: () => getByRole("link", { name: "Load More" }),
+  cardInnerImg: async () => await findAllByAltText("Movie Image"),
 };
 
+beforeEach(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(TESTJSON),
+    })
+  );
+
+  render(<PageWrapper />);
+
+  jest.useFakeTimers();
+});
+
 describe("PageWrapper component", () => {
-  test("renders main wrapper", () => {
-    render(<PageWrapper />);
-
-    const mainWrapperElement = getByRole("main");
-    expect(mainWrapperElement).toBeInTheDocument();
-  });
-
   test("renders 'Popular Movies' as a heading", () => {
-    render(<PageWrapper />);
-
     const popularMoviesHeading = getByRole("heading", {
       name: "Popular Movies",
     });
-    expect(popularMoviesHeading).toBeInTheDocument();
+    expect(popularMoviesHeading).toHaveTextContent("Popular Movies");
   });
 
   test("change the button color and preform the operation", () => {
-    render(<PageWrapper />);
+    const combobox = getByRole("combobox");
+
+    act(() => userEvent.selectOptions(
+      combobox,
+      getByRole("option", { name: "Rating Descending" })
+    ));
 
     const searchButton = getByRole("link", { name: "Search" }).parentElement
       ?.parentElement;
-    const buttonClass = searchButton.getAttribute("class");
 
-    userEvent.click(searchButton);
+    act(() => userEvent.click(searchButton));
 
-    expect(buttonClass).toMatch(/off/i);
+    expect(combobox).toHaveValue("vote_average.desc");
   });
 
   test("renders more movies when pressing 'load more' button", () => {
-    render(<PageWrapper />);
+    act(() => jest.runAllTimers());
 
-    // const loadMoreButton = getByRole("link", { name: "Load More" });
-    // const loadMoreButtonContainer =
-    //   loadMoreButton?.parentElement?.parentElement;
+    const loadMore = getByRole("link", { name: "Load More" });
+    act(() => userEvent.click(loadMore));
 
-    userEvent.click(elements.loadLink());
-
-    expect(elements.loadLink()).not.toBeInTheDocument();
+    expect(loadMore).not.toBeInTheDocument();
   });
 
   test("renders fetched data, and checks format", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(TESTJSON),
-      })
-    );
+    act(() => jest.runAllTimers());
 
-    render(<PageWrapper />);
+    const fetchedData = await elements.cardInnerImg();
 
-    const fetchedDataInnerImg = await findAllByTestId("custom-element");
+    expect(fetchedData).not.toHaveLength(0);
 
-    expect(fetchedDataInnerImg).not.toHaveLength(0);
-
-    fetchedDataInnerImg.map((image) => {
+    fetchedData.map((image) => {
       let imageSrc = image.getAttribute("src");
 
       expect(imageSrc).toMatch(new RegExp(IMAGE_URL_START, "i"));
@@ -73,46 +70,30 @@ describe("PageWrapper component", () => {
   });
 
   test("renders more data after the button", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(TESTJSON),
-      })
-    );
-
-    render(<PageWrapper />);
-
-    const fetchedDataInnerImgBefore = await findAllByTestId("custom-element");
+    const fetchedDataBefore = await elements.cardInnerImg();
 
     const loadMoreButton = getByRole("link", { name: "Load More" });
-    userEvent.click(loadMoreButton);
+    act(() => userEvent.click(loadMoreButton));
 
-    const fetchedDataInnerImgAfter = await findAllByTestId("custom-element");
+    const fetchedDataAfter = await elements.cardInnerImg();
 
-    expect(fetchedDataInnerImgAfter).not.toBe(fetchedDataInnerImgBefore);
+    expect(fetchedDataAfter).not.toBe(fetchedDataBefore);
   });
 
   test("renders more movies after pressing 'load more' button, and scrolling down near bottom", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(TESTJSON),
-      })
-    );
-
-    render(<PageWrapper />);
-
-    const fetchedDataInnerImgBefore = await findAllByTestId("custom-element");
+    const fetchedDataBefore = await elements.cardInnerImg();
 
     const loadMoreButton = getByRole("link", { name: "Load More" });
-    userEvent.click(loadMoreButton);
+    act(() => userEvent.click(loadMoreButton));
 
-    const fetchedDataInnerImgMid = await findAllByTestId("custom-element");
+    const fetchedDataMid = await elements.cardInnerImg();
 
-    expect(fetchedDataInnerImgMid).not.toBe(fetchedDataInnerImgBefore);
+    expect(fetchedDataMid).not.toBe(fetchedDataBefore);
 
     await fireEvent.scroll(window, { target: { scrollY: 2800 } });
 
-    const fetchedDataInnerImgAfter = await findAllByTestId("custom-element");
+    const fetchedDataAfter = await elements.cardInnerImg();
 
-    expect(fetchedDataInnerImgAfter).not.toBe(fetchedDataInnerImgMid);
+    expect(fetchedDataAfter).not.toBe(fetchedDataMid);
   });
 });

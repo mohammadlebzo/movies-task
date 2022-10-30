@@ -9,24 +9,14 @@ import styled from "styled-components";
 
 const FooterEl = styled.footer`
   font-family: ${FONT.family.main};
-  max-width: 100%;
-  width: 100vw;
-  box-sizing: border-box;
-  padding: 0;
-
   background-image: radial-gradient(
     at 30% top,
     #031d33 0%,
     ${FONT.color.darkBlue} 70%
   );
 
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  align-content: space-between;
   justify-content: center;
 
   @media screen and (${MEDIA.mobile}) {
@@ -59,9 +49,6 @@ const FooterLogo = styled.div`
     top: 0;
     width: 100%;
     padding-bottom: 20px;
-    word-wrap: normal;
-    word-break: normal;
-    hyphens: none;
     text-align: left;
   }
 `;
@@ -75,7 +62,6 @@ const JoinButton = styled.a`
   font-size: 1.3em;
   font-weight: bold;
   display: inline-block;
-  word-wrap: break-word;
   white-space: normal;
   text-transform: uppercase;
 
@@ -100,8 +86,6 @@ const NavWrapper = styled.nav`
 
   & div {
     margin-right: 40px;
-    min-width: 0;
-    box-sizing: border-box;
   }
 
   & div img {
@@ -115,7 +99,6 @@ const NavWrapper = styled.nav`
     width: 100%;
     display: block;
     padding: 0 20px;
-    box-sizing: border-box;
 
     & div img {
       display: none;
@@ -128,13 +111,7 @@ function Footer() {
     <FooterEl>
       <NavWrapper>
         <FooterLogo>
-          <img
-            className="test"
-            src={IMAGE.footerLogo}
-            alt=""
-            width={130}
-            height={94}
-          />
+          <img src={IMAGE.footerLogo} alt="" width={130} height={94} />
           <JoinButton href="">Join the Community</JoinButton>
         </FooterLogo>
         <FooterContentWrapper />

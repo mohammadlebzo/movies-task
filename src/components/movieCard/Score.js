@@ -67,33 +67,6 @@ const UserScore = styled.div`
   text-align: center;
 `;
 
-// const TestLoader = styled.div`
-//   // width: 50px;
-//   width: 34px;
-//   height: 34px;
-//   background-color: transparent;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-
-//   & > * {
-//     background-color: transparent;
-//   }
-
-//   & svg {
-//     transform: rotate(1000deg);
-//   }
-
-//   & circle {
-//     fill: none;
-//     stroke: green;
-//     stroke-width: 4.4px;
-//     stroke-linecap: round;
-//     stroke-dasharray: ${props => props.percent * 2.1}, 100;
-//     stroke-dashoffset: 60;
-//   }
-// `;
-
 function Score({ score }) {
   return (
     <>
@@ -119,11 +92,6 @@ function Score({ score }) {
                 }}
               />
             </Canvas>
-            {/* <TestLoader percent={score * 10}>
-              <svg viewBox="22 30 50 50">
-                <circle cx="46" cy="54" r="22.6" fill="none" ></circle>
-              </svg>
-            </TestLoader> */}
           </UserScore>
         </OuterRing>
       </ScoreWrapper>

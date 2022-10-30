@@ -30,7 +30,6 @@ const ContentWrapper = styled.div`
     overflow-wrap: break-word;
     font-weight: 600;
     padding: 0;
-    box-sizing: border-box;
 
     & a {
       text-decoration: none;
@@ -120,7 +119,6 @@ const ImageSection = styled.div`
     min-width: 94px;
     width: 94px;
     height: 141px;
-    box-sizing: border-box;
   }
 `;
 
@@ -294,9 +292,11 @@ const TitleWrapperMobile = styled.div`
 
 function Card({ filter, page, setProgress }) {
   const [fetchedMovies, setFetchedMovies] = useState(new Array(20).fill(0));
-  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
+    if (page >= 500) {
+      return;
+    }
     fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&page=${page}&sort_by=${filter}`
     )
@@ -331,104 +331,82 @@ function Card({ filter, page, setProgress }) {
             setFetchedMovies([...fetchedMovies, ...filterdData]);
           }
           setProgress(100);
-          setToggle(true);
         }, 500);
       });
   }, [page, filter]);
 
   return fetchedMovies.map((movie) => {
-        let mobileVersionDate = `${new Date(movie.date).toLocaleString(
-          "default",
-          { month: "long", day: "numeric" }
-        )}, ${new Date(movie.date).toLocaleString("default", {
-          year: "numeric",
-        })}`;
-        let imageSource;
+    let filteredDate = `${new Date(movie.date).toLocaleString("default", {
+      month: "long",
+      day: "numeric",
+    })}, ${new Date(movie.date).toLocaleString("default", {
+      year: "numeric",
+    })}`;
+    let imageSource = null;
 
-        if (movie.image !== `${IMAGE_URL_START}null`) {
-          imageSource = movie.image;
-        }
+    if (movie.image !== `${IMAGE_URL_START}null`) {
+      imageSource = movie.image;
+    }
 
-        return (
-          <div  key={movie["id"]}>
-            <MovieCardWrapper key={movie["id"]}>
-              <ImageSection>
-                <ImageWrapper>
-                  <a href="">
-                    {toggle && (
-                      <img
-                        data-testid="custom-element"
-                        src={imageSource}
-                        alt={
-                          !toggle
-                            ? "placeholder"
-                            : `${movie.title} ${movie.date}`
-                        }
-                      />
-                    )}
-                  </a>
-                </ImageWrapper>
+    return (
+      <div key={movie["id"]}>
+        <MovieCardWrapper key={movie["id"]}>
+          <ImageSection>
+            <ImageWrapper>
+              <a href="">
+                <img src={imageSource ?? IMAGE_URL_START} alt="Movie Image" />
+              </a>
+            </ImageWrapper>
 
-                <MoreOptionsMenu />
-              </ImageSection>
-              <ContentWrapper>
-                <Score score={!toggle ? 0 : movie.score} />
+            <MoreOptionsMenu />
+          </ImageSection>
+          <ContentWrapper>
+            <Score score={movie.score ?? 0} />
 
-                <h2>
-                  <a href="">{!toggle ? "name" : movie.title}</a>
-                </h2>
-                <p>{!toggle ? "00-00-0000" : movie.date}</p>
-              </ContentWrapper>
-              <HoverWrapper />
-            </MovieCardWrapper>
+            <h2>
+              <a href="">{movie.title ?? "name"}</a>
+            </h2>
+            <p>{filteredDate ?? "may 00, 0000"}</p>
+          </ContentWrapper>
+          <HoverWrapper />
+        </MovieCardWrapper>
 
-            {/* Mobile render */}
+        {/* Mobile render */}
 
-            <MovieCardWrapperMobile key={`${movie.id}m`}>
-              <CardDetailsWrapper>
-                <ImageSection>
-                  <ImageWrapper>
+        <MovieCardWrapperMobile key={`${movie.id}m`}>
+          <CardDetailsWrapper>
+            <ImageSection>
+              <ImageWrapper>
+                <a href="">
+                  <img src={imageSource ?? IMAGE_URL_START} alt="Movie Image" />
+                </a>
+              </ImageWrapper>
+            </ImageSection>
+            <ContentWrapperMobile>
+              <InnerContentWrapperMobile>
+                <TitleWrapperMobile>
+                  <div>
                     <a href="">
-                      {toggle && (
-                        <img
-                          data-testid="custom-element"
-                          src={imageSource}
-                          alt={
-                            !toggle
-                              ? "placeholder"
-                              : `${movie.title} ${movie.date}`
-                          }
-                        />
-                      )}
+                      <h2>{movie.title ?? "name"}</h2>
                     </a>
-                  </ImageWrapper>
-                </ImageSection>
-                <ContentWrapperMobile>
-                  <InnerContentWrapperMobile>
-                    <TitleWrapperMobile>
-                      <div>
-                        <a href="">
-                          <h2>{movie?.title ??  "name"}</h2>
-                        </a>
-                      </div>
+                  </div>
 
-                      <span>
-                        {!toggle ? "may 00, 0000" : mobileVersionDate}
-                      </span>
-                    </TitleWrapperMobile>
-                  </InnerContentWrapperMobile>
+                  <span>{filteredDate ?? "may 00, 0000"}</span>
+                </TitleWrapperMobile>
+              </InnerContentWrapperMobile>
 
-                  <OverviewMobile>
-                    <p>{!toggle ? "overview" : movie.overview}</p>
-                  </OverviewMobile>
-                </ContentWrapperMobile>
-              </CardDetailsWrapper>
-            </MovieCardWrapperMobile>
+              <OverviewMobile>
+                <p>{movie.overview ?? "overview"}</p>
+              </OverviewMobile>
+            </ContentWrapperMobile>
+          </CardDetailsWrapper>
+        </MovieCardWrapperMobile>
 
-            {/* Mobile render */}
-          </div>
-        );
-      })}
+        {/* Mobile render */}
+      </div>
+    );
+  });
+}
 
 Card.propTypes = {
   filter: PropTypes.string,

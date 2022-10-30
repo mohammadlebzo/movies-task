@@ -13,9 +13,6 @@ const ContentSection = styled.section`
   align-items: flex-start;
   align-content: flex-start;
   width: 100%;
-  box-sizing: border-box;
-  background-size: cover;
-  background-repeat: no-repeat;
   background-position: 50% 50%;
 `;
 

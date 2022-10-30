@@ -22,7 +22,6 @@ const Content = styled.div`
 
 const HeaderEl = styled.header`
   height: 64px;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;

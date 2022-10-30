@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 const ContentWrapper = styled.div`
   margin-right: 40px;
-  min-width: 0;
-  box-sizing: border-box;
 
   & h3 {
     font-weight: bold;
@@ -13,8 +11,6 @@ const ContentWrapper = styled.div`
     line-height: 1.4em;
     white-space: nowrap;
     margin: 0 0 4px 0;
-    adding: 0;
-    box-sizing: border-box;
   }
 
   & ul {
@@ -79,4 +75,5 @@ function FooterContentWrapper() {
   );
 }
 
+export { TITLES, CONTENT };
 export default FooterContentWrapper;

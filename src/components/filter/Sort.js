@@ -171,16 +171,8 @@ const SearchButton = styled.div`
 
 function Sort({ setFilter, setToggleScrollLoading, setAllowLoading, setPage }) {
   const [isShowen, setIsShowen] = useState(true);
-  const [toggleButton, setToggleButton] = useState(false);
-  let searchToggle = "off";
-
+  const [buttonClassName, setButtonClassName] = useState("off");
   const option = useRef();
-
-  if (toggleButton) {
-    searchToggle = "on";
-  } else {
-    searchToggle = "off";
-  }
 
   return (
     <>
@@ -200,7 +192,7 @@ function Sort({ setFilter, setToggleScrollLoading, setAllowLoading, setPage }) {
               ref={option}
               name="sortBy"
               id="sortBy"
-              onChange={() => setToggleButton(true)}
+              onChange={() => setButtonClassName("on")}
             >
               <option value="popularity.desc">Popularity Descending</option>
               <option value="popularity.asc">Popularity Ascending</option>
@@ -215,11 +207,11 @@ function Sort({ setFilter, setToggleScrollLoading, setAllowLoading, setPage }) {
         )}
       </FilterSortCard>
       <SearchButton
-        className={`${searchToggle}`}
+        className={`${buttonClassName}`}
         onClick={(e) => {
           e.preventDefault();
 
-          setToggleButton(false);
+          setButtonClassName("off");
           setFilter(option.current.value);
           setToggleScrollLoading(false);
           setAllowLoading(false);
