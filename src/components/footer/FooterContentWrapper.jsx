@@ -2,15 +2,15 @@ import { FONT } from "../../constants/style/StyleParams";
 import styled from "styled-components";
 
 const ContentWrapper = styled.div`
-  margin-right: 40px;
+  margin-right: 2.5rem;
 
   & h3 {
-    font-weight: bold;
-    font-size: 1.4em;
+    font-weight: 700;
+    font-size: 1.26rem;
     text-transform: uppercase;
-    line-height: 1.4em;
+    line-height: 1.764rem;
     white-space: nowrap;
-    margin: 0 0 4px 0;
+    margin: 0 0 0.25rem 0;
   }
 
   & ul {
@@ -30,8 +30,10 @@ const ContentWrapper = styled.div`
   }
 
   & ul li {
-    line-height: 1.6em;
-    max-width: 260px;
+    font-weight: 400;
+    font-size: 1.08rem;
+    line-height: 1.44rem;
+    max-width: 16.25rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

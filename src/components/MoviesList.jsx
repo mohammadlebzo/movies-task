@@ -4,26 +4,22 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const CardsWrapper = styled.div`
-  width: 100%;
+  // width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
   @media screen and (${MEDIA.mobile}) {
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
 `;
 
 const LoadButton = styled.div`
-  margin-top: 30px;
-  padding: 0;
-  max-width: 100%;
+  margin-top: 1.875rem;
   width: 100%;
-  height: 50px;
+  height: 3.125rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: ${FONT.color.lightBlue};
   color: ${FONT.color.black};
 
@@ -46,30 +42,30 @@ const LoadButton = styled.div`
       font-weight: 700;
       color: ${FONT.color.white};
       display: block;
-      margin-left: 4px;
-      margin-right: 4px;
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
       text-decoration: none;
       background: transparent;
+    }
+
+    & a:hover {
+      color: ${FONT.color.black};
     }
   }
 `;
 
 const MainListWrapper = styled.div`
-  padding-left: 30px;
-  background: transparent;
-  padding-right: 0;
-  width: calc(100vw - 80px - 268px);
-  max-width: calc(1400px - 80px - 268px);
+  padding-left: 1.875rem;
+  width: calc(100vw - 5rem - 16.75rem);
+  max-width: calc(87.5rem - 5rem - 16.75rem);
   display: flex;
-  flex-wrap: wrap;
-
-  color: #000;
+  color: ${FONT.color.black};
   font-family: ${FONT.family.main};
   font-size: 1em;
 
   @media screen and (${MEDIA.mobile}) {
-    width: calc(100vw - 40px);
-    margin-top: 20px;
+    width: calc(100vw - 2.5rem);
+    margin-top: 1.25rem;
     padding: 0;
     max-width: 100vw;
     height: auto;
@@ -81,7 +77,7 @@ const MainListWrapper = styled.div`
 const MoviesSectionWrapper = styled.section`
   width: 100%;
   display: block;
-  padding: 30px 0;
+  padding: 1.875rem 0;
 
   &:last-of-type {
     padding-bottom: 0;
@@ -107,7 +103,7 @@ const MoviesSectionWrapper = styled.section`
 `;
 
 const MediaItems = styled.div`
-  margin-top: -30px;
+  margin-top: -1.875rem;
 
   @media screen and (${MEDIA.mobile}) {
     margin: 0;

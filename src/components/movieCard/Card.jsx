@@ -15,7 +15,7 @@ const API_KEY = "44d7e5b985c13f05c6230b397a75ac68";
 
 const ContentWrapper = styled.div`
   width: 100%;
-  padding: 26px 10px 12px 10px;
+  padding: 1.625rem 0.625rem 0.75rem 0.625rem;
   position: relative;
   white-space: normal;
   display: flex;
@@ -24,11 +24,11 @@ const ContentWrapper = styled.div`
   align-items: flex-start;
 
   & h2 {
-    font-size: 1em;
+    font-size: 1.1rem;
     margin: 0;
     width: 100%;
     overflow-wrap: break-word;
-    font-weight: 600;
+    font-weight: 800;
     padding: 0;
 
     & a {
@@ -37,8 +37,12 @@ const ContentWrapper = styled.div`
     }
   }
 
+  & h2 a:hover {
+    color: ${FONT.color.lightBlue}
+  }
+
   & p {
-    font-size: 1em;
+    font-size: 1rem;
     margin: 0;
     padding: 0;
     color: ${FONT.color.veryLightBlack};
@@ -54,7 +58,7 @@ const ContentWrapperMobile = styled.div`
   display: none;
 
   @media screen and (${MEDIA.mobile}) {
-    padding: 14px;
+    padding: 0.875rem;
     display: flex;
     align-content: center;
     align-items: center;
@@ -65,8 +69,8 @@ const ContentWrapperMobile = styled.div`
 `;
 
 const CardDetailsWrapper = styled.div`
-  width: calc(100vw - 42px);
-  max-width: calc(100vw - 42px);
+  width: calc(100vw - 2.625rem);
+  max-width: calc(100vw - 2.625rem);
   display: flex;
 `;
 
@@ -92,33 +96,33 @@ const InnerContentWrapperMobile = styled.div`
 
 const ImageSection = styled.div`
   width: 100%;
-  height: calc((100vw - 80px - 260px - (30px * 5)) / 5 * 1.5);
-  max-height: calc((1400px - 80px - 260px - (30px * 5)) / 5 * 1.5);
+  height: calc((100vw - 5rem - 16.25rem - (1.875rem * 5)) / 5 * 1.5);
+  max-height: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 5)) / 5 * 1.5);
 
   @media screen and (${MEDIA.renderFourCards}) {
-    height: calc((100vw - 80px - 260px - (30px * 4)) / 4 * 1.5);
-    max-height: calc((1400px - 80px - 260px - (30px * 4)) / 4 * 1.5);
+    height: calc((100vw - 5rem - 16.25rem - (1.875rem * 4)) / 4 * 1.5);
+    max-height: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 4)) / 4 * 1.5);
   }
 
   @media screen and (${MEDIA.renderThreeCards}) {
-    height: calc((100vw - 80px - 260px - (30px * 3)) / 3 * 1.5);
-    max-height: calc((1400px - 80px - 260px - (30px * 3)) / 3 * 1.5);
+    height: calc((100vw - 5rem - 16.25rem - (1.875rem * 3)) / 3 * 1.5);
+    max-height: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 3)) / 3 * 1.5);
   }
 
   @media screen and (${MEDIA.renderTwoCards}) {
-    height: calc((100vw - 80px - 260px - (30px * 2)) / 2 * 1.5);
-    max-height: calc((1400px - 80px - 260px - (30px * 2)) / 2 * 1.5);
+    height: calc((100vw - 5rem - 16.25rem - (1.875rem * 2)) / 2 * 1.5);
+    max-height: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 2)) / 2 * 1.5);
   }
 
   @media screen and (${MEDIA.renderOneCard}) {
-    height: calc((100vw - 80px - 260px - (30px * 1)) / 1 * 1.5);
-    max-height: calc((1400px - 80px - 260px - (30px * 1)) / 1 * 1.5);
+    height: calc((100vw - 5rem - 16.25rem - (1.875rem * 1)) / 1 * 1.5);
+    max-height: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 1)) / 1 * 1.5);
   }
 
   @media screen and (${MEDIA.mobile}) {
-    min-width: 94px;
-    width: 94px;
-    height: 141px;
+    min-width: 5.875rem;
+    width: 5.875rem;
+    height: 8.813rem;
   }
 `;
 
@@ -172,33 +176,35 @@ const MovieCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  border: 1px solid ${BORDER.color.lightGray};
+  border: 0.063rem solid ${BORDER.color.lightGray};
   border-radius: ${BORDER.radius.default} ;
   overflow: hidden;
-  margin-top: 30px;
-  width: calc((100vw - 80px - 260px - (30px * 5)) / 5);
-  max-width: calc((1400px - 80px - 260px - (30px * 5)) / 5);
-  box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
+  margin-top: 1.875rem;
+  width: calc((100vw - 5rem - 16.25rem - (1.875rem * 5)) / 5);
+  max-width: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 5)) / 5);
+  box-shadow: 0 0.125rem 0.5rem ${BACKGROUND.color.veryLightBlack};
   background-color: ${BACKGROUND.color.white};
 
+  min-height: 23.313rem;
+
   @media screen and (${MEDIA.renderFourCards}) {
-    width: calc((100vw - 80px - 260px - (30px * 4)) / 4);
-    max-width: calc((1400px - 80px - 260px - (30px * 4)) / 4);
+    width: calc((100vw - 5rem - 16.25rem - (1.875rem * 4)) / 4);
+    max-width: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 4)) / 4);
   }
 
   @media screen and (${MEDIA.renderThreeCards}) {
-    width: calc((100vw - 80px - 260px - (30px * 3)) / 3);
-    max-width: calc((1400px - 80px - 260px - (30px * 3)) / 3);
+    width: calc((100vw - 5rem - 16.25rem - (1.875rem * 3)) / 3);
+    max-width: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 3)) / 3);
   }
 
   @media screen and (${MEDIA.renderTwoCards}) {
-    width: calc((100vw - 80px - 260px - (30px * 2)) / 2);
-    max-width: calc((1400px - 80px - 260px - (30px * 2)) / 2);
+    width: calc((100vw - 5rem - 16.25rem - (1.875rem * 2)) / 2);
+    max-width: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 2)) / 2);
   }
 
   @media screen and (${MEDIA.renderOneCard}) {
-    width: calc((100vw - 80px - 260px - (30px * 1)) / 1);
-    max-width: calc((1400px - 80px - 260px - (30px * 1)) / 1);
+    width: calc((100vw - 5rem - 16.25rem - (1.875rem * 1)) / 1);
+    max-width: calc((87.5rem - 5rem - 16.25rem - (1.875rem * 1)) / 1);
   }
 
   @media screen and (${MEDIA.mobile}) {
@@ -212,11 +218,11 @@ const MovieCardWrapperMobile = styled.div`
 
   @media screen and (${MEDIA.mobile}) {
     display: flex;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     width: 100%;
     border-radius: ${BORDER.radius.mobile};
-    box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
-    border: 1px solid ${BORDER.color.lightGray};
+    box-shadow: 0 0.125rem 0.5rem ${BACKGROUND.color.veryLightBlack};
+    border: 0.063rem solid ${BORDER.color.lightGray};
     background-color: ${BACKGROUND.color.white};
 
     &:first-of-type {
@@ -226,13 +232,13 @@ const MovieCardWrapperMobile = styled.div`
 `;
 
 const OverviewMobile = styled.div`
-  max-height: 3.2em;
+  max-height: 3.2rem;
   height: auto;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 
   & p {
-    font-size: 0.9em;
-    line-height: 1.2em;
+    font-size: 0.8rem;
+    line-height: 1.1rem;
     display: -webkit-box;
     line-clamp: 2;
     box-orient: vertical;
@@ -267,7 +273,7 @@ const TitleWrapperMobile = styled.div`
 
       & h2 {
         display: block;
-        font-size: 1em;
+        font-size: 1rem;
         margin: 0;
         white-space: normal;
         overflow: visible;
@@ -284,7 +290,7 @@ const TitleWrapperMobile = styled.div`
 
   & span {
     margin-left: 0;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     white-space: nowrap;
     color: ${FONT.color.mediumLightGray};
   }

@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const LogoWrapper = styled.a`
   display: block;
-  margin-right: 16px;
-  width: 154px;
-  height: 20px;
+  margin-right: 1rem;
+  width: 9.625rem;
+  height: 1.25rem;
 
   @media screen and (${MEDIA.mobile}) {
     display: none;

@@ -31,18 +31,17 @@ const ColumnWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   flex-wrap: wrap;
-  max-width: 1400px;
+  max-width: 87.5rem;
   width: 100%;
   display: flex;
   align-items: flex-start;
   align-content: flex-start;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-top: 0.625rem;
 
   @media screen and (${MEDIA.mobile}) {
-    padding: 20px;
+    padding: 1.25rem;
   }
 `;
 
@@ -64,7 +63,7 @@ const LoadingWrapper = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   display: flex;
   flex: 1 1 auto;
   min-height: 100%;
@@ -81,7 +80,7 @@ const MainTag = styled.main`
   align-content: flex-start;
   justify-content: center;
   background-color: ${BACKGROUND.color.white};
-  margin-top: 64px;
+  margin-top: 4rem;
 `;
 
 const MediaWrapper = styled.div`
@@ -106,7 +105,11 @@ const SortWrapperMobile = styled.div`
 
 const Title = styled.div`
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0.188rem;
+
+  & h2 {
+    font-size: 1.6rem;
+  }
 `;
 
 function PageWrapper() {

@@ -1,7 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PageWrapper from "./PageWrapper";
-import { IMAGE_URL_START, TESTJSON } from "../constants/Defults";
+import { IMAGE_URL_START } from "../constants/Defults";
+import { MOCKDATA } from "../constants/mock/mockFetchData";
 import { act } from "react-dom/test-utils";
 
 const { getByRole, findAllByAltText } = screen;
@@ -13,7 +14,7 @@ const elements = {
 beforeEach(() => {
   global.fetch = jest.fn(() =>
     Promise.resolve({
-      json: () => Promise.resolve(TESTJSON),
+      json: () => Promise.resolve(MOCKDATA),
     })
   );
 

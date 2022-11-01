@@ -2,29 +2,18 @@ import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
 import styled from "styled-components";
 
 const InnerOptionsIcon = styled.div`
-  font-size: 1.6em;
+  font-size: 1.6rem;
   background-image: url(${BACKGROUND.iconURL.moreMenu});
-  position: relative;
-  top: 0;
-  left: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1em;
-  min-height: 1em;
-  width: 1em;
-  height: 1em;
-  line-height: inherit;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: inherit;
-  box-sizing: border-box;
+  min-width: 1.6rem;
+  min-height: 1.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
 `;
 
 const MenuIcon = styled.div`
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0.5rem;
+  right: 0.5rem;
   z-index: 4;
   opacity: 0.6;
 
