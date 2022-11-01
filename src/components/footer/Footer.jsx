@@ -22,6 +22,7 @@ const FooterEl = styled.footer`
   @media screen and (${MEDIA.mobile}) {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+
     height: auto;
   }
 

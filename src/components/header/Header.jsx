@@ -186,7 +186,6 @@ const PlusItem = styled.span`
   min-height: 1.4rem;
   width: 1.4rem;
   height: 1.4rem;
-
   line-height: inherit;
   background-position: center center;
   background-repeat: no-repeat;
