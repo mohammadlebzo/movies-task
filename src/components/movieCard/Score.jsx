@@ -12,9 +12,9 @@ const Canvas = styled.div`
 
 const OuterRing = styled.div`
   margin-right: 0;
-  width: 38px;
-  height: 38px;
-  padding: 2px;
+  width: 2.375rem;
+  height: 2.375rem;
+  padding: 0.125rem;
   display: inline-block;
   border-radius: 50%;
   background-color: ${BACKGROUND.color.darkBluePlus};
@@ -30,29 +30,27 @@ const Percent = styled.div`
 `;
 
 const PercentText = styled.span`
-  padding-top: 1px;
-  padding-right: 5px;
-  font-size: 0.7em;
+  padding-top: 0.063rem;
+  padding-right: 0.313rem;
+  font-size: 0.8rem;
   color: ${FONT.color.white};
-  font-family: "Consensus" !important;
-  font-style: normal;
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
-  font-variant: normal;
 
   & span {
-    font-size: 0.6em;
+    font-size: 0.5rem;
     position: absolute;
-    top: 10px;
-    right: 5px;
+    top: 0.625rem;
+    right: 0.313rem;
   }
 `;
 
 const ScoreWrapper = styled.div`
   position: absolute;
-  top: -19px;
-  left: 10px;
-  width: 38px;
-  height: 38px;
+  top: -1.188rem;
+  left: 0.625rem;
+  width: 2.375rem;
+  height: 2.375rem;
   box-sizing: border-box;
   display: inline-block;
   transition: transform 0.2s;
@@ -82,10 +80,21 @@ function Score({ score }) {
             <Canvas>
               <CircularProgress
                 variant="determinate"
+                value={100}
+                style={{
+                  width: "2.125rem",
+                  height: "2.125rem",
+                  color: `${FONT.color.darkGreen}`,
+                }}
+              />
+            </Canvas>
+            <Canvas>
+              <CircularProgress
+                variant="determinate"
                 value={score * 10}
                 style={{
-                  width: "34px",
-                  height: "34px",
+                  width: "2.125rem",
+                  height: "2.125rem",
                   color: `${
                     score * 10 < 70 ? FONT.color.pumpkin : FONT.color.lightGreen
                   }`,

@@ -4,9 +4,11 @@ import {
   MEDIA,
   BORDER,
 } from "../../constants/style/StyleParams";
+import FilterCard from "./FiltersCard";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useState, useRef } from "react";
+import WhereToWatchCard from "./WhereToWatchCard";
 
 const CardController = styled.div`
   width: 100%;
@@ -14,14 +16,12 @@ const CardController = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
-  padding: 14px 16px;
+  padding: 0.875rem 1rem;
 
   & h2 {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     margin: 0;
-    padding: 0;
     font-weight: 600;
-    box-sizing: border-box;
   }
 
   & span {
@@ -29,32 +29,24 @@ const CardController = styled.div`
     position: relative;
     top: 0;
     left: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1em;
-    min-height: 1em;
-    width: 1em;
-    height: 1em;
-    line-height: inherit;
-    background-position: center center;
-    background-repeat: no-repeat;
-    color: inherit;
-    box-sizing: border-box;
+    min-width: 0.9rem;
+    min-height: 0.9rem;
+    width: 0.9rem;
+    height: 0.9rem;
     cursor: pointer;
   }
 `;
 
 const FilterSortCard = styled.div`
-  min-width: 260px;
-  width: 260px;
-  border: 1px solid ${BORDER.color.lightGray};
-  border-radius: ${BORDER.noraml};
+  min-width: 16.25rem;
+  width: 16.25rem;
+  border: 0.063rem solid ${BORDER.color.lightGray};
+  border-radius: ${BORDER.radius.default};
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: hidden;
-  box-shadow: 0 2px 8px ${BACKGROUND.color.veryLightBlack};
+  box-shadow: 0 0.25rem 0.5rem ${BACKGROUND.color.veryLightBlack};
   background-color: ${BACKGROUND.color.white};
 
   @media screen and (${MEDIA.mobile}) {
@@ -64,86 +56,66 @@ const FilterSortCard = styled.div`
 `;
 
 const FilterContainer = styled.div`
-  width: 100%;
-  border-top: 1px solid ${BORDER.color.veryLightGray};
-  padding: 14px 16px 16px 16px;
+  border-top: 0.063rem solid ${BORDER.color.veryLightGray};
+  padding: 0.2rem 1rem 1rem 1rem;
 
   & h3 {
     display: inline-flex;
-    align-items: center;
-    width: 100%;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 300;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+    margin-bottom: 0.625rem;
   }
 
   & select {
     width: 100%;
     font-family: ${FONT.family.main};
+    font-size: 0.9rem;
+    font-weight: 500;
     border-width: 0;
     outline: 0;
-    box-sizing: border-box;
-    line-height: 1.5;
-    text-align: left;
-    white-space: nowrap;
-    display: inline-flex;
-    vertical-align: middle;
     position: relative;
-
-    margin: 0;
     padding: 0.375rem 0.75rem;
-    min-width: 0;
-    border: 0;
-    box-shadow: none;
-    color: inherit;
 
     background-color: ${BACKGROUND.color.grayBG1_base};
-    border-radius: 4px;
+    border-radius: 0.25rem;
 
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
       border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
     cursor: pointer;
+
+    & option {
+      background-color: ${BACKGROUND.color.white};
+      font-weight: 600;
+    }
+
+    & option:hover {
+      background-color: ${BACKGROUND.color.grayBG1_hover};
+    }
   }
 
   & select:hover {
     background-color: ${BACKGROUND.color.grayBG1_hover};
   }
+
+  @media screen and (${MEDIA.mobile}) {
+    width: 100%;
+  }
 `;
 
 const SearchButton = styled.div`
-  width: 100%;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  border-radius: 20px;
-  height: 44px;
+  border-radius: 1.25rem;
+  height: 2.75rem;
 
   & p {
-    display: inline-flex;
-    align-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 1em;
-    box-sizing: border-box;
-
     & a {
       color: ${FONT.color.veryLightBlack};
       font-size: 1.2em;
-      line-height: 1;
       font-weight: 600;
-      width: 100%;
-      height: 100%;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
       text-decoration: none;
     }
   }
@@ -206,6 +178,10 @@ function Sort({ setFilter, setToggleScrollLoading, setAllowLoading, setPage }) {
           </FilterContainer>
         )}
       </FilterSortCard>
+
+      <FilterCard />
+      <WhereToWatchCard />
+
       <SearchButton
         className={`${buttonClassName}`}
         onClick={(e) => {

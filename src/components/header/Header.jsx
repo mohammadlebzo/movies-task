@@ -21,12 +21,12 @@ const Content = styled.div`
 `;
 
 const HeaderEl = styled.header`
-  height: 64px;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 0;
   background-color: ${FONT.color.darkBlue};
   width: 100%;
@@ -34,7 +34,7 @@ const HeaderEl = styled.header`
   transition: top 0.2s linear;
 
   &.up {
-    top: -65px;
+    top: -4.063rem;
   }
 
   @media screen and (${MEDIA.mobile}) {
@@ -54,30 +54,20 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  top: 0;
-  left: 0;
-  max-width: 1400px;
+  max-width: 87.5rem;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 2.5rem;
 
   @media screen and (${MEDIA.mobile}) {
-    padding: 0 20px;
+    padding: 0 1rem;
   }
 `;
 
 const NavList = styled.ul`
-  line-height: 24px;
-  height: 40px;
-  position: relative;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  list-style-type: none;
-  text-decoration: none;
   padding: 0;
   font-family: ${FONT.family.main};
-  font-size: 1em;
-  flex-direction: row;
+  font-size: 1rem;
 
   & li:first-child {
     margin-left: 0;
@@ -85,13 +75,11 @@ const NavList = styled.ul`
 
   & li {
     position: relative;
+    margin-right: 0.875rem;
     display: flex;
     align-items: center;
-    align-content: center;
     font-weight: 600;
-    padding: 8px;
-    align-content: center;
-    text-decoration: none;
+    padding: 0.5rem;
 
     color: ${FONT.color.white};
 
@@ -101,31 +89,14 @@ const NavList = styled.ul`
     }
 
     & .navItemWrapper {
-      width: 173.283px;
-      height: 138.233px;
+      width: 10.83rem;
+      height: 8.64rem;
       overflow: hidden;
       z-index: 10002;
-      top: 40px;
-      left: 0px;
-      box-sizing: content-box;
+      top: 2.5rem;
+      left: 0;
       display: none;
       position: absolute;
-
-      border-radius: 0 0 0.25rem 0.25rem;
-
-      & ul {
-        max-height: 580.767px;
-        overflow: auto;
-        position: relative;
-        font-size: 10px;
-        font-family: ${FONT.family.main};
-        font-stretch: 100%;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 24px;
-        display: none;
-        transform: translateY(-138.233px);
-      }
     }
 
     &:hover .navItemWrapper {
@@ -133,42 +104,27 @@ const NavList = styled.ul`
       display: block;
 
       & ul {
-        display: block;
-        transform: translateY(0px);
-
         box-shadow: none;
         border-color: rgba(0, 0, 0, 0.15);
         color: ${FONT.color.grayF1};
         background-color: ${FONT.color.white};
-        margin: 0;
         padding: 0.5rem 0;
-        list-style: none;
         border-radius: 0.25rem;
-        border-width: 1px;
+        border-width: 0.063rem;
         border-style: solid;
-        box-sizing: border-box;
-
         outline: 0;
-        text-decoration: none;
 
         & li {
-          padding-right: 50px;
+          width: 100%;
+          padding-right: 3.125rem;
           position: relative;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           line-height: 1.5;
-          outline: 0;
-          border-width: 0;
-          display: flex;
-          user-select: none;
-          cursor: default;
-          align-items: center;
-          align-content: center;
           color: ${FONT.color.black};
-          font-weight: 400;
+          font-weight: 600;
         }
 
         & li:hover {
-          text-decoration: none;
           outline: 0;
           cursor: pointer;
           background-color: ${BACKGROUND.color.lightBlue};
@@ -180,30 +136,15 @@ const NavList = styled.ul`
 
 const NavListMobile = styled.ul`
   width: 100%;
-  max-width: 100%;
   display: flex;
   justify-content: space-between;
-  align-content: center;
   padding: 0;
-  align-items: center;
-  list-style-type: none;
 
   & span {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1em;
-    min-height: 1em;
-    width: 1em;
-    height: 1em;
-    line-height: inherit;
-    background-position: center center;
-    background-repeat: no-repeat;
-    color: inherit;
-    box-sizing: border-box;
+    min-width: 1.4rem;
+    min-height: 1.4rem;
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
   & div {
@@ -214,8 +155,6 @@ const NavListMobile = styled.ul`
 
     & li:first-child {
       display: flex;
-      align-items: center;
-      align-content: center;
 
       & span {
         background-image: url(${BACKGROUND.iconURL.user});
@@ -225,17 +164,11 @@ const NavListMobile = styled.ul`
     }
 
     & li:last-child {
-      margin-left: 14px;
+      margin-left: 0.875rem;
       display: flex;
-      align-items: center;
-      align-content: center;
-
       & a {
-        font-size: 1.5em;
+        font-size: 1.54rem;
         height: 100%;
-        display: inline-flex;
-        align-items: center;
-        align-content: center;
 
         & span {
           background-image: url(${BACKGROUND.iconURL.search});
@@ -247,18 +180,12 @@ const NavListMobile = styled.ul`
 
 const PlusItem = styled.span`
   background-image: url(${BACKGROUND.iconURL.plus});
-  background-color: transparent;
-  font-size: 1.4em;
-  position: relative;
-  top: 0;
-  left: 0;
+  font-size: 1.4rem;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1em;
-  min-height: 1em;
-  width: 1em;
-  height: 1em;
+  min-width: 1.4rem;
+  min-height: 1.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
   line-height: inherit;
   background-position: center center;
   background-repeat: no-repeat;
@@ -268,8 +195,6 @@ const PlusItem = styled.span`
 
 const SubMedia = styled.div`
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
   align-items: center;
   overflow: visible;
 
@@ -280,10 +205,6 @@ const SubMedia = styled.div`
 
 const SubMediaMobile = styled.div`
   display: none;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  align-items: center;
-  overflow: visible;
   width: 100%;
 
   @media screen and (${MEDIA.mobile}) {
@@ -292,12 +213,7 @@ const SubMediaMobile = styled.div`
 
   & a {
     display: flex;
-    align-items: center;
-    align-content: center;
     color: ${FONT.color.white};
-    font-weight: 600;
-    text-decoration: none;
-    background: transparent;
   }
 `;
 
@@ -305,60 +221,47 @@ const SideMenu = styled.li`
   width: 33%;
   display: flex;
   align-items: center;
-  align-content: center;
 
   & span {
     background-image: url(${BACKGROUND.iconURL.sideMenu});
     filter: invert(1);
-    font-size: 1.4em;
+    font-size: 1.4rem;
   }
 `;
 
 const SearchItem = styled.span`
   background-image: url(${BACKGROUND.iconURL.search});
-  background-color: transparent;
-  font-size: 1.4em;
-  position: relative;
-  top: 0;
-  left: 0;
+  font-size: 1.82rem;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1em;
-  min-height: 1em;
-  width: 1em;
-  height: 1em;
-  line-height: inherit;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: inherit;
-  box-sizing: border-box;
+  min-width: 1.82rem;
+  min-height: 1.82rem;
+  width: 1.82rem;
+  height: 1.82rem;
 `;
 
 const TranslateItem = styled.li`
   display: block;
-  padding: 4px 0;
-
+  padding: 0.25rem 0;
   & div {
-    width: 28px;
-    height: 26px;
+    width: 1.75rem;
+    height: 1.625rem;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    border: 1px solid ${FONT.color.white};
-    border-radius: 3px;
-    padding: 3px 5px;
+    border: 0.063rem solid ${FONT.color.white};
+    border-radius: 0.188rem;
+    padding: 0.188rem 0.313rem;
     transition: linear 0.1s;
     color: ${FONT.color.white};
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 0.8rem;
     text-transform: uppercase;
   }
 
   & div:hover {
     background-color: ${FONT.color.white};
-    border: 1px solid ${FONT.color.black};
+    border: 0.063rem solid ${FONT.color.black};
     color: ${FONT.color.black};
     cursor: pointer;
   }

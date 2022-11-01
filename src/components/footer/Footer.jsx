@@ -20,8 +20,9 @@ const FooterEl = styled.footer`
   justify-content: center;
 
   @media screen and (${MEDIA.mobile}) {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+
     height: auto;
   }
 
@@ -31,14 +32,14 @@ const FooterEl = styled.footer`
     width: 100%;
     color: ${FONT.color.white};
     opacity: 0.1;
-    font-size: 0.7em;
+    font-size: 0.69rem;
   }
 `;
 
 const FooterLogo = styled.div`
   text-align: right;
   position: relative;
-  top: -36px;
+  top: -2.25rem;
   right: 0;
 
   & a {
@@ -48,44 +49,44 @@ const FooterLogo = styled.div`
   @media screen and (${MEDIA.mobile}) {
     top: 0;
     width: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
     text-align: left;
   }
 `;
 
 const JoinButton = styled.a`
   position: relative;
-  top: 140px;
+  top: 8.75rem;
   border-color: ${FONT.color.white};
   background-color: ${BACKGROUND.color.white};
   color: ${FONT.color.lightBlue};
-  font-size: 1.3em;
+  font-size: 1.108rem;
   font-weight: bold;
   display: inline-block;
   white-space: normal;
   text-transform: uppercase;
 
-  border: 2px solid ${FONT.color.white};
-  border-radius: 5px;
-  padding: 8px 16px;
+  border: 0.125rem solid ${FONT.color.white};
+  border-radius: 0.313rem;
+  padding: 0.5rem 1rem;
   transition: linear 0.1s;
 
   @media screen and (${MEDIA.mobile}) {
     top: 0;
-    padding: 8px 16px;
+    padding: 0.5rem 1rem;
   }
 `;
 
 const NavWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding-top: 80px;
-  padding-bottom: 80px;
-  font-size: 0.9em;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  font-size: 0.8rem;
   color: ${FONT.color.white};
 
   & div {
-    margin-right: 40px;
+    margin-right: 2.5rem;
   }
 
   & div img {
@@ -98,7 +99,7 @@ const NavWrapper = styled.nav`
   @media screen and (${MEDIA.mobile}) {
     width: 100%;
     display: block;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 
     & div img {
       display: none;
