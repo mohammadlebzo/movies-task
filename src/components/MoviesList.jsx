@@ -10,20 +10,20 @@ const CardsWrapper = styled.div`
   flex-wrap: wrap;
 
   @media screen and (${MEDIA.mobile}) {
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 `;
 
 const LoadButton = styled.div`
-  margin-top: 30px;
+  margin-top: 3rem;
   padding: 0;
   max-width: 100%;
   width: 100%;
-  height: 50px;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: ${FONT.color.lightBlue};
   color: ${FONT.color.black};
 
@@ -46,8 +46,8 @@ const LoadButton = styled.div`
       font-weight: 700;
       color: ${FONT.color.white};
       display: block;
-      margin-left: 4px;
-      margin-right: 4px;
+      margin-left: 0.4rem;
+      margin-right: 0.4rem;
       text-decoration: none;
       background: transparent;
     }
@@ -55,11 +55,11 @@ const LoadButton = styled.div`
 `;
 
 const MainListWrapper = styled.div`
-  padding-left: 30px;
+  padding-left: 3rem;
   background: transparent;
   padding-right: 0;
-  width: calc(100vw - 80px - 268px);
-  max-width: calc(1400px - 80px - 268px);
+  width: calc(100vw - 8rem - 26.8rem);
+  max-width: calc(140rem - 8rem - 26.8rem);
   display: flex;
   flex-wrap: wrap;
 
@@ -68,8 +68,8 @@ const MainListWrapper = styled.div`
   font-size: 1em;
 
   @media screen and (${MEDIA.mobile}) {
-    width: calc(100vw - 40px);
-    margin-top: 20px;
+    width: calc(100vw - 4rem);
+    margin-top: 2rem;
     padding: 0;
     max-width: 100vw;
     height: auto;
@@ -81,7 +81,7 @@ const MainListWrapper = styled.div`
 const MoviesSectionWrapper = styled.section`
   width: 100%;
   display: block;
-  padding: 30px 0;
+  padding: 3rem 0;
 
   &:last-of-type {
     padding-bottom: 0;
