@@ -1,4 +1,4 @@
-import { FONT, BACKGROUND } from "../../constants/style/StyleParams";
+import { FONT, BACKGROUND } from "constants/style/StyleParams";
 import styled from "styled-components";
 
 const InnerOptionsIcon = styled.div`

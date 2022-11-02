@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { IMAGE } from "../../constants/style/StyleParams";
-import Header from "./Header";
+import { IMAGE } from "constants/style/StyleParams";
+import Header from "components/header/Header";
 
 const { getByRole } = screen;
 

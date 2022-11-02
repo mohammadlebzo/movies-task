@@ -1,14 +1,14 @@
-import { IMAGE_URL_START } from "../../constants/Defults";
+import { IMAGE_URL_START } from "constants/Defults";
 import {
   FONT,
   BACKGROUND,
   MEDIA,
   BORDER,
-} from "../../constants/style/StyleParams";
+} from "constants/style/StyleParams";
 import PropTypes from "prop-types";
-import MoreOptionsMenu from "./MoreOptionsMenu";
+import MoreOptionsMenu from "components/movieCard/MoreOptionsMenu";
 import styled from "styled-components";
-import Score from "./Score";
+import Score from "components/movieCard/Score";
 import { useState, useEffect } from "react";
 
 const API_KEY = "44d7e5b985c13f05c6230b397a75ac68";

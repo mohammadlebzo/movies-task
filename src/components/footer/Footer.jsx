@@ -1,10 +1,10 @@
-import FooterContentWrapper from "./FooterContentWrapper";
+import FooterContentWrapper from "components/footer/FooterContentWrapper";
 import {
   IMAGE,
   FONT,
   BACKGROUND,
   MEDIA,
-} from "../../constants/style/StyleParams";
+} from "constants/style/StyleParams";
 import styled from "styled-components";
 
 const FooterEl = styled.footer`

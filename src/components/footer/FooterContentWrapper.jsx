@@ -1,5 +1,6 @@
-import { FONT } from "../../constants/style/StyleParams";
+import { FONT } from "constants/style/StyleParams";
 import styled from "styled-components";
+import { TITLES, CONTENT } from "constants/mock/MockFooterData";
 
 const ContentWrapper = styled.div`
   margin-right: 2.5rem;
@@ -44,15 +45,6 @@ const ContentWrapper = styled.div`
     color: ${FONT.color.white};
   }
 `;
-
-const TITLES = ["The Basics", "Get Involved", "Community", "Legal"];
-
-const CONTENT = [
-  ["About TMDB", "Contact Us", "Support Forums", "API", "System Status"],
-  ["Contribution Bible", "Add New Movie", "Add New TV Show"],
-  ["Guidelines", "Discussions", "Leaderboard", "Twitter"],
-  ["Terms of Use", "API Terms of Use", "Privacy Policy"],
-];
 
 function FooterContentWrapper() {
   return (

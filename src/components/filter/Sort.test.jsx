@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Sort from "./Sort";
+import Sort from "components/filter/Sort";
 import userEvent from "@testing-library/user-event";
 
 const { getByRole } = screen;
@@ -11,6 +11,7 @@ const elements = {
 };
 
 beforeEach(() => {
+  
   render(<Sort />);
 });
 

@@ -3,8 +3,8 @@ import {
   BACKGROUND,
   IMAGE,
   MEDIA,
-} from "../../constants/style/StyleParams";
-import Logo from "./Logo";
+} from "constants/style/StyleParams";
+import Logo from "components/header/Logo";
 import styled from "styled-components";
 import { useState, useEffect, useCallback } from "react";
 

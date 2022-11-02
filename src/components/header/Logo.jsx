@@ -1,4 +1,4 @@
-import { IMAGE, MEDIA } from "../../constants/style/StyleParams";
+import { IMAGE, MEDIA } from "constants/style/StyleParams";
 import styled from "styled-components";
 
 const LogoWrapper = styled.a`

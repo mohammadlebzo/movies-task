@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { TITLES, CONTENT } from "./FooterContentWrapper";
-import FooterContentWrapper from "./FooterContentWrapper";
+import { TITLES, CONTENT } from "constants/mock/MockFooterData";
+import FooterContentWrapper from "components/footer/FooterContentWrapper";
 
 const { getAllByRole } = screen;
 

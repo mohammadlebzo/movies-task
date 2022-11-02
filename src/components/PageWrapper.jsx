@@ -1,9 +1,9 @@
-import { BACKGROUND, MEDIA } from "../constants/style/StyleParams";
-import Header from "./header/Header";
+import { BACKGROUND, MEDIA } from "constants/style/StyleParams";
+import Header from "components/header/Header";
 import { LinearProgress } from "@mui/material";
-import MoviesList from "./MoviesList";
+import MoviesList from "components/MoviesList";
 import styled from "styled-components";
-import Sort from "./filter/Sort";
+import Sort from "components/filter/Sort";
 import { useState, useRef, useCallback, useEffect } from "react";
 
 const ContentSection = styled.section`
@@ -173,6 +173,7 @@ function PageWrapper() {
                         setToggleScrollLoading={setToggleScrollLoading}
                         setAllowLoading={setAllowLoading}
                         setPage={setPage}
+                        titles={["Sort", "Filters", "Where To Watch"]}
                       />
                     </SortWrapperMobile>
 

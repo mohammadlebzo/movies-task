@@ -1,5 +1,5 @@
 import { CircularProgress } from "@mui/material";
-import { BACKGROUND, FONT } from "../../constants/style/StyleParams";
+import { BACKGROUND, FONT } from "constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 

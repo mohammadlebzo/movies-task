@@ -1,5 +1,5 @@
-import Card from "./movieCard/Card";
-import { FONT, MEDIA } from "../constants/style/StyleParams";
+import Card from "components/movieCard/Card";
+import { FONT, MEDIA } from "constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 

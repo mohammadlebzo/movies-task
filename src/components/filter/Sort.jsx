@@ -3,12 +3,10 @@ import {
   BACKGROUND,
   MEDIA,
   BORDER,
-} from "../../constants/style/StyleParams";
-import FilterCard from "./FiltersCard";
+} from "constants/style/StyleParams";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useState, useRef } from "react";
-import WhereToWatchCard from "./WhereToWatchCard";
 
 const CardController = styled.div`
   width: 100%;
@@ -38,6 +36,11 @@ const CardController = styled.div`
 `;
 
 const FilterSortCard = styled.div`
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  margin-top: 0.75rem;
   min-width: 16.25rem;
   width: 16.25rem;
   border: 0.063rem solid ${BORDER.color.lightGray};
@@ -141,46 +144,63 @@ const SearchButton = styled.div`
   }
 `;
 
-function Sort({ setFilter, setToggleScrollLoading, setAllowLoading, setPage }) {
+function Sort({
+  setFilter,
+  setToggleScrollLoading,
+  setAllowLoading,
+  setPage,
+  titles,
+}) {
   const [isShowen, setIsShowen] = useState(true);
   const [buttonClassName, setButtonClassName] = useState("off");
   const option = useRef();
 
   return (
     <>
-      <FilterSortCard>
-        <CardController>
-          <h2>Sort</h2>
-          <span
-            style={isShowen ? { transform: "rotate(90deg)" } : {}}
-            onClick={() => setIsShowen(!isShowen)}
-          ></span>
-        </CardController>
-        {isShowen && (
-          <FilterContainer>
-            <h3>Sort Result By</h3>
+      {titles.map((title, idx) => {
+        return (
+          <FilterSortCard key={idx}>
+            <CardController>
+              <h2>{title}</h2>
+              <span
+                style={
+                  title === "Sort"
+                    ? isShowen
+                      ? { transform: "rotate(90deg)" }
+                      : {}
+                    : { transform: "rotate(0deg)" }
+                }
+                onClick={title === "Sort" ? () => setIsShowen(!isShowen) : ""}
+              ></span>
+            </CardController>
+            {title === "Sort" && isShowen && (
+              <FilterContainer>
+                <h3>Sort Result By</h3>
 
-            <select
-              ref={option}
-              name="sortBy"
-              id="sortBy"
-              onChange={() => setButtonClassName("on")}
-            >
-              <option value="popularity.desc">Popularity Descending</option>
-              <option value="popularity.asc">Popularity Ascending</option>
-              <option value="vote_average.desc">Rating Descending</option>
-              <option value="vote_average.asc">Rating Ascending</option>
-              <option value="release_date.desc">Release Date Descending</option>
-              <option value="release_date.asc">Release Date Ascending</option>
-              <option value="original_title.asc">Title (A-Z)</option>
-              <option value="original_title.desc">Title (Z-A)</option>
-            </select>
-          </FilterContainer>
-        )}
-      </FilterSortCard>
-
-      <FilterCard />
-      <WhereToWatchCard />
+                <select
+                  ref={option}
+                  name="sortBy"
+                  id="sortBy"
+                  onChange={() => setButtonClassName("on")}
+                >
+                  <option value="popularity.desc">Popularity Descending</option>
+                  <option value="popularity.asc">Popularity Ascending</option>
+                  <option value="vote_average.desc">Rating Descending</option>
+                  <option value="vote_average.asc">Rating Ascending</option>
+                  <option value="release_date.desc">
+                    Release Date Descending
+                  </option>
+                  <option value="release_date.asc">
+                    Release Date Ascending
+                  </option>
+                  <option value="original_title.asc">Title (A-Z)</option>
+                  <option value="original_title.desc">Title (Z-A)</option>
+                </select>
+              </FilterContainer>
+            )}
+          </FilterSortCard>
+        );
+      })}
 
       <SearchButton
         className={`${buttonClassName}`}
@@ -207,6 +227,7 @@ Sort.propTypes = {
   setToggleScrollLoading: PropTypes.func,
   setAllowLoading: PropTypes.func,
   setPage: PropTypes.func,
+  titles: PropTypes.array,
 };
 
 export default Sort;

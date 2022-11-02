@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import Footer from "./Footer";
-import { IMAGE } from "../../constants/style/StyleParams";
+import Footer from "components/footer/Footer";
+import { IMAGE } from "constants/style/StyleParams";
 
 const { getByRole } = screen;
 

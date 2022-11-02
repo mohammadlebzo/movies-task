@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import PageWrapper from "./PageWrapper";
-import { IMAGE_URL_START } from "../constants/Defults";
-import { MOCKDATA } from "../constants/mock/mockFetchData";
+import PageWrapper from "components/PageWrapper";
+import { IMAGE_URL_START } from "constants/Defults";
+import { MOCKDATA } from "constants/mock/MockFetchData";
 import { act } from "react-dom/test-utils";
 
 const { getByRole, findAllByAltText } = screen;
