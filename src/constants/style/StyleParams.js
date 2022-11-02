@@ -53,8 +53,8 @@ const BORDER = {
     veryLightGray: "#eee",
   },
   radius: {
-    default: "8px",
-    mobile: "6px",
+    default: "0.5rem",
+    mobile: "0.375rem",
   },
 };
 
@@ -66,11 +66,11 @@ const IMAGE = {
 };
 
 const MEDIA = {
-  mobile: "max-width: 450px",
-  renderOneCard: "max-width: 699px",
-  renderTwoCards: "max-width: 899px",
-  renderThreeCards: "max-width: 1039px",
-  renderFourCards: "max-width: 1239px",
+  mobile: "max-width: 28.125rem", // 450px
+  renderOneCard: "max-width: 43.688rem", // 699px
+  renderTwoCards: "max-width: 56.188rem", // 899px
+  renderThreeCards: "max-width: 64.938rem", // 1039px
+  renderFourCards: "max-width: 77.438rem", // 1239px
 };
 
 export { FONT, BACKGROUND, IMAGE, MEDIA, BORDER };
