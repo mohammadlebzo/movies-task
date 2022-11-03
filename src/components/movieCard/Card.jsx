@@ -355,8 +355,8 @@ function Card({ filter, page, setProgress }) {
     }
 
     return (
-      <div key={movie["id"]}>
-        <MovieCardWrapper key={movie["id"]}>
+      <div key={movie.id}>
+        <MovieCardWrapper key={movie.id}>
           <ImageSection>
             <ImageWrapper>
               <a href="">

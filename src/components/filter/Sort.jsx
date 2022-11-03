@@ -170,7 +170,7 @@ function Sort({
                       : {}
                     : { transform: "rotate(0deg)" }
                 }
-                onClick={title === "Sort" ? () => setIsShowen(!isShowen) : ""}
+                onClick={title === "Sort" ? () => setIsShowen(!isShowen) : () => {}}
               ></span>
             </CardController>
             {title === "Sort" && isShowen && (

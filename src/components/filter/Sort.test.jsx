@@ -5,14 +5,12 @@ import userEvent from "@testing-library/user-event";
 const { getByRole } = screen;
 
 const elements = {
-  comboBox: () => getByRole("combobox"),
   sortHeading: () => getByRole("heading", { name: "Sort" }),
   sortResultByHeading: () => getByRole("heading", { name: "Sort Result By" }),
 };
 
 beforeEach(() => {
-  
-  render(<Sort />);
+  render(<Sort titles={["Sort", "Filters", "Where To Watch"]} />);
 });
 
 describe("Sort component", () => {
